@@ -12,5 +12,11 @@ def index():
 
 @app.route('/segments')
 def segments():
-    return render_template('segments.html')
+    menu = 'segments'
+    return render_template('index.html', menu=menu)
 
+
+@app.route('/dashboard')
+def dashboard():
+    menu = 'dashboard'
+    return render_template('index.html', menu=menu)
