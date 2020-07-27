@@ -7,7 +7,8 @@ from packus.web.application import app
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    menu = 'dashboard'
+    return render_template('index.html', menu=menu)
 
 
 @app.route('/segments')
