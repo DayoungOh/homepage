@@ -1,7 +1,4 @@
 <!--세그먼트 생성 화면-->
-
-{% block content %}
-
     <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent" id="pills-segments" role="tabpanel" aria-labeleledby="pills-segments">
         <div class="container-fluid">
           <div class="navbar-wrapper">
@@ -82,7 +79,7 @@
                             <div class="form-group row mb-4">
                                 <div class="col-sm-3">모델명</div>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputSegModalName" aria-describedby="segmentNm">
+                                    <input type="text" class="form-control" id="seg-name" aria-describedby="segmentNm">
                                     <small id="segmentNm" class="form-text text-muted">저장할 세그먼트 모델명을 입력하세요.</small>
                                 </div>
                             </div>
@@ -90,27 +87,27 @@
                                 <div class="col-sm-3">연령</div>
                                 <div class="col-sm-9">
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="ageCheck1" value="20대 초반" checked="checked">
+                                        <input class="form-check-input" type="checkbox" id="ageCheck1" value="18-24" name="age">
                                         <label class="form-check-label" for="ageCheck1">18-24</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="ageCheck2" value="30대 초반">
+                                        <input class="form-check-input" type="checkbox" id="ageCheck2" name="age" value="25-34">
                                         <label class="form-check-label" for="ageCheck2">25-34</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="ageCheck3" value="40대 초반">
+                                        <input class="form-check-input" type="checkbox" id="ageCheck3" name="age" value="35-44">
                                         <label class="form-check-label" for="ageCheck3">35-44</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="ageCheck4" value="50대 초반">
+                                        <input class="form-check-input" type="checkbox" id="ageCheck4" name="age" value="45-54">
                                         <label class="form-check-label" for="ageCheck4">45-54</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="ageCheck5" value="60대 초반">
+                                        <input class="form-check-input" type="checkbox" id="ageCheck5" name="age" value="55-64">
                                         <label class="form-check-label" for="ageCheck5">55-64</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="ageCheck6" value="70대 초반">
+                                        <input class="form-check-input" type="checkbox" id="ageCheck6" name="age" value="65-74">
                                         <label class="form-check-label" for="ageCheck6">65-74</label>
                                     </div>
                                 </div>
@@ -119,15 +116,15 @@
                                 <div class="col-sm-3">성별</div>
                                 <div class="col-sm-9">
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="sexCheck1" value="남성" checked="checked">
+                                        <input class="form-check-input" type="checkbox" id="sexCheck1" name="sexfl" value="남성">
                                         <label class="form-check-label" for="sexCheck1">남성</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="sexCheck2" value="여성">
+                                        <input class="form-check-input" type="checkbox" id="sexCheck2" name="sexfl" value="여성">
                                         <label class="form-check-label" for="sexCheck2">여성</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="sexCheck3" value="모름">
+                                        <input class="form-check-input" type="checkbox" id="sexCheck3" name="sexfl" value="모름">
                                         <label class="form-check-label" for="sexCheck3">알 수 없음</label>
                                     </div>
                                 </div>
@@ -140,24 +137,24 @@
                                 <div class="col-sm-3">구매액</div>
                                 <div class="col-sm-9">
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck1" value="20만원 미만" checked="checked">
+                                        <input class="form-check-input" type="checkbox" id="priceCheck1" name="sales" value="20만원 미만">
                                         <label class="form-check-label" for="priceCheck1">20만원 미만</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck2" value="20 - 50만원">
+                                        <input class="form-check-input" type="checkbox" id="priceCheck2" name="sales" value="20 - 50만원">
                                         <label class="form-check-label" for="priceCheck2">20 - 50만원</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck3" value="50 - 100만원">
+                                        <input class="form-check-input" type="checkbox" id="priceCheck3" name="sales" value="50 - 100만원">
                                         <label class="form-check-label" for="priceCheck3">50 - 100만원</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck4" value="100만원 초과">
+                                        <input class="form-check-input" type="checkbox" id="priceCheck4" name="sales" value="100만원 초과">
                                         <label class="form-check-label" for="priceCheck4">100만원 초과</label>
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary float-right saveSeg">저장</button>
+                            <button type="button" class="btn btn-primary float-right saveSeg" id='seg-save-bnt'>저장</button>
                         </form>
                     </div>
                 </div>
@@ -169,34 +166,10 @@
     <!--                <p class="card-category">24 Hours performance</p>-->
                     </div>
                     <div class="card-body" style="height: 650px; overflow: auto;">
-                        <div class="list-group">
-                          <div class="list-group-item list-group-item-action">
-                              모델명0(40대, 남성, 일반음식점, 20만원 미만)
-                              <button type="button" class="btn btn-sm btn-danger float-right m-0 removeSeg">삭제</button>
-                          </div>
-<!--                          <div class="list-group-item list-group-item-action">-->
-<!--                              모델명1(50대, 여성, 인터넷/PC방, 100만원 초과)-->
-<!--                              <button type="button" class="btn btn-sm btn-danger float-right m-0 removeSeg">삭제</button>-->
-<!--                          </div>-->
-<!--                          <div class="list-group-item list-group-item-action">-->
-<!--                              모델명2(30대, 여성, 매운탕전문점, 50만원 이상 100만원 미만)-->
-<!--                              <button type="button" class="btn btn-sm btn-danger float-right m-0 removeSeg">삭제</button>-->
-<!--                          </div>-->
-<!--                          <div class="list-group-item list-group-item-action">-->
-<!--                              모델명3(30대, 남성, 일반한식/백반, 100만원 초과)-->
-<!--                              <button type="button" class="btn btn-sm btn-danger float-right m-0 removeSeg">삭제</button>-->
-<!--                          </div>-->
-<!--&lt;!&ndash;                      <div class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">40대, 여성, 일반 음식점, 20만원 이상 50만원 미만</div>&ndash;&gt;-->
-<!--                          <div class="list-group-item list-group-item-action">모델명4(50대, 여성, 인터넷/PC방, 100만원 초과)</div>-->
-<!--                          <div class="list-group-item list-group-item-action">모델명5(30대, 여성, 매운탕전문점, 50만원 이상 100만원 미만)</div>-->
-<!--                          <div class="list-group-item list-group-item-action">모델명6(30대, 남성, 일반한식/백반, 100만원 초과)</div>-->
-<!--                          <div class="list-group-item list-group-item-action">모델명7(50대, 여성, 인터넷/PC방, 100만원 초과)</div>-->
-<!--                          <div class="list-group-item list-group-item-action">모델명8(30대, 여성, 매운탕전문점, 50만원 이상 100만원 미만)</div>-->
+                        <div class="list-group" id="segments-list">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-{% endblock %}

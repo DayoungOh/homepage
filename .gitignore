@@ -141,3 +141,5 @@ yarn-error.log*
 
 # ui/ux
 /uiux
+
+.vscode/
