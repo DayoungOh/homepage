@@ -100,7 +100,7 @@ const Base = {
   addSegListTag: function (segId, segInfo) {
     const segInfoStr = " (나이: " + segInfo.age + " / 성별: " + segInfo.sexfl 
     + " / 업종: " +segInfo.upjong+ " / 매출액: " + segInfo.sales + ")"
-    let $list = $('<div class="list-group-item list-group-item-action">' + segInfo.model_nm + segInfoStr +'</div>');
+    let $list = $('<div class="list-group-item list-group-item-action d-flex"><div style="width: 90%; margin-right: auto;">' + segInfo.model_nm + segInfoStr +'</div></div>');
     const $btnTag =$( '<button type="button" class="btn btn-sm btn-danger float-right m-0 removeSeg" value="' 
     + segId+'">삭제</button>').on("click", function () {
       let removeConfirm = confirm("해당 모델을 삭제하시겠습니까?");
