@@ -3342,11 +3342,10 @@ License - nucleoapp.com/license/
   float: right;
   width: calc(100% - 230px);
   background-color: #f4f3ef;
-  transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  height: 100%; }
+  transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1); }
   .main-panel > .content {
     padding: 0 30px 30px;
-    min-height: calc(100vh - px);
+    min-height: calc(100vh - 63px);
     margin-top: 93px; }
   .main-panel > .navbar {
     margin-bottom: 0; }
@@ -3686,7 +3685,7 @@ License - nucleoapp.com/license/
     font-weight: 500;
     padding-bottom: 15px; }
   .card label {
-    font-size: 0.8571em;
+    font-size: 0.9em;
     /*margin-bottom: 5px;*/
     margin-top: 1px;
     margin-left: 5px;
@@ -4219,4 +4218,22 @@ License - nucleoapp.com/license/
     width: 38%;
     padding: 15px; } }
 
-/*# sourceMappingURL=paper-dashboard.css.map */
+#segList .card .card-body {
+    height: 700px;
+    overflow: auto;
+}
+#segUpjong .card .card-body {
+    height: 420px!important;
+    overflow: auto;
+    display: inline-block;
+}
+#segReports .card .card-body {
+    height: 650px;
+    overflow: auto;
+}
+.sub-menu{
+    padding-left: 38px;
+    list-style:none;
+    height: 28px;
+    width: 230px;
+}

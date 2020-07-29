@@ -9,26 +9,53 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-
             <li
               {% if menu == 'dashboard' %}
                 class="active"
               {% endif %}
             >
             <a href="/dashboard" id="pills-dashboard">
-              <i class="nc-icon nc-bank"></i>
-              <p>대시보드</p>
+              <i class="nc-icon nc-tile-56"></i>
+              <p>전체 회원</p>
             </a>
           </li>
-           <li
+          <li
+              {% if menu == 'model' %}
+                class="active"
+              {% endif %}
+            >
+            <a href="/model" id="pills-rfm">
+              <i class="nc-icon nc-bank"></i>
+              <p>RFM 모델</p>
+            </a>
+          </li>
+          <li
               {% if menu == 'segments' %}
                 class="active"
               {% endif %}
             >
-            <a href="/segments" id="pills-segments">
+            <a href="/segments/segments" id="pills-segments">
               <i class="nc-icon nc-diamond"></i>
               <p>세그먼트</p>
             </a>
+            <ul class="sub-menu mt-0">
+                <li class="sub-sidebar-brand"
+                    {% if menu == 'segments' %}
+                        class="active"
+                      {% endif %}
+                    >
+                    <a href="/segments/segments" class="p-0 mt-0">―   세그먼트 생성<span class="sub_icon fa fa-hdd-o"></span></a>
+                </li>
+            </ul>
+            <ul class="sub-menu mt-2">
+                <li class="sub-sidebar-brand"
+                    {% if menu == 'seg_reports' %}
+                        class="active"
+                      {% endif %}
+                    >
+                    <a href="/segments/seg_reports" class="p-0 mt-0">―   세그먼트 보고서<span class="sub_icon fa fa-hdd-o"></span></a>
+                </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -36,9 +63,13 @@
 
     <div class="main-panel">
       {% if menu == 'segments' %}
-        {% include "segments.html" %}
+        {% include "segments/segments.html" %}
+      {% elif menu == 'seg_reports' %}
+        {% include "segments/seg_reports.html" %}
       {% elif menu == 'dashboard' %}
         {% include "dashboard.html" %}
+      {% elif menu == 'model' %}
+        {% include "model.html" %}
       {% endif %}
     </div>
 
