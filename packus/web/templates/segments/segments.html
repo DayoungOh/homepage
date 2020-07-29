@@ -133,73 +133,8 @@
                                 <div class="col-sm-2 text-center my-auto">업종</div>
                                 <div class="col-sm-10" id="segUpjong">
                                     <div class="card" style="box-shadow: none; border: 1px solid #dddddd;">
-                                        <div class="card-body d-flex">
-                                            <div class="col-4 p-0">
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong1" name="" value="">
-                                                    <label class="form-check-label" for="upjong1">기타고기요리</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong2" name="" value="">
-                                                    <label class="form-check-label" for="upjong2">갈비/삼겹살</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong3" name="" value="">
-                                                    <label class="form-check-label" for="upjong3">고등어전문</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong4" name="" value="">
-                                                    <label class="form-check-label" for="upjong4">곱창/양구이전문</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong5" name="" value="">
-                                                    <label class="form-check-label" for="upjong5">낙지/오징어</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-4 p-0">
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong1" name="" value="">
-                                                    <label class="form-check-label" for="upjong1">기타고기요리</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong2" name="" value="">
-                                                    <label class="form-check-label" for="upjong2">갈비/삼겹살</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong3" name="" value="">
-                                                    <label class="form-check-label" for="upjong3">고등어전문</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong4" name="" value="">
-                                                    <label class="form-check-label" for="upjong4">곱창/양구이전문</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong5" name="" value="">
-                                                    <label class="form-check-label" for="upjong5">낙지/오징어</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-4 p-0">
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong1" name="" value="">
-                                                    <label class="form-check-label" for="upjong1">기타고기요리</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong2" name="" value="">
-                                                    <label class="form-check-label" for="upjong2">갈비/삼겹살</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong3" name="" value="">
-                                                    <label class="form-check-label" for="upjong3">고등어전문</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong4" name="" value="">
-                                                    <label class="form-check-label" for="upjong4">곱창/양구이전문</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="upjong5" name="" value="">
-                                                    <label class="form-check-label" for="upjong5">낙지/오징어</label>
-                                                </div>
-                                            </div>
+                                        <div class="card-body">
+                                            <div class="row ml-2" id="upjong-list"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -208,20 +143,28 @@
                                 <div class="col-sm-2 text-center my-auto">구매액</div>
                                 <div class="col-sm-10">
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck1" name="sales" value="20만원 미만">
-                                        <label class="form-check-label" for="priceCheck1">20만원 미만</label>
+                                        <input class="form-check-input" type="checkbox" id="priceCheck1" name="sales" value="5만원 미만">
+                                        <label class="form-check-label" for="priceCheck1">5만원 미만</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck2" name="sales" value="20 - 50만원">
-                                        <label class="form-check-label" for="priceCheck2">20 - 50만원</label>
+                                        <input class="form-check-input" type="checkbox" id="priceCheck2" name="sales" value="5만원 - 15만원">
+                                        <label class="form-check-label" for="priceCheck2">5만원 - 15만원</label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="priceCheck3" name="sales" value="15 - 30만원">
+                                        <label class="form-check-label" for="priceCheck3">15 - 30만원</label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="priceCheck3" name="sales" value="30 - 50만원">
+                                        <label class="form-check-label" for="priceCheck3">30 - 50만원</label>
                                     </div>
                                     <div class="form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="priceCheck3" name="sales" value="50 - 100만원">
                                         <label class="form-check-label" for="priceCheck3">50 - 100만원</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck4" name="sales" value="100만원 초과">
-                                        <label class="form-check-label" for="priceCheck4">100만원 초과</label>
+                                        <input class="form-check-input" type="checkbox" id="priceCheck4" name="sales" value="100만원 이상">
+                                        <label class="form-check-label" for="priceCheck4">100만원 이상</label>
                                     </div>
                                 </div>
                             </div>
