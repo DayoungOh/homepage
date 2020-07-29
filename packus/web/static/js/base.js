@@ -6,7 +6,7 @@ const Base = {
     $("ul.nav")
       .children()
       .on("click", function () {
-        $("ul.nav").children().removeClass("active");
+        $(".sidebar-wrapper").find("ul").children().removeClass("active");
         $(this).addClass("active");
       });
 
