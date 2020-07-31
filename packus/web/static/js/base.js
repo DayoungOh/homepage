@@ -21,8 +21,7 @@ const Base = {
 
   segInfo: {
     model_nm: "",
-    sexfl: "",
-    upjong: "갈비/삼겹살",
+    upjong: "",
     sales: "",
   },
 
@@ -31,18 +30,19 @@ const Base = {
     $("input[type=checkbox]").on("click", function () {
       if ($(this).attr("checked")) {
         // 비활성화
-        $(this).removeAttr("checked");
+        $(this).prop("checked", false);
       } else {
         // 활성화
         const name = $(this).attr("name");
         const value = $(this).attr("value");
-        $(this).attr("checked", "checked");
+        $(this).prop("checked", true);
         let $checkedTags = $("[name='" + name + "']:checked");
         let checkedValues = [];
         for (let i=0; i < $checkedTags.length; i++) {
           checkedValues.push($($checkedTags[i]).attr('value'))
         }
         Base.segInfo[name] = checkedValues.join(",");
+        console.log(Base.segInfo);
       }
     });
   },
@@ -89,8 +89,7 @@ const Base = {
           Base.addSegListTag(resp["id"], Base.segInfo);
           Base.segInfo = {
             model_nm: "",
-            sexfl: "",
-            upjong: "갈비/삼겹살",
+            upjong: "",
             sales: "",
           };
           $('input[type=checkbox]').prop('checked', false)
@@ -113,8 +112,7 @@ const Base = {
   },
 
   addSegListTag: function (segId, segInfo) {
-    const segInfoStr = " (성별: " + segInfo.sexfl 
-    + " / 업종: " +segInfo.upjong+ " / 매출액: " + segInfo.sales + ")"
+    const segInfoStr = " (업종: " +segInfo.upjong+ " / 매출액: " + segInfo.sales + ")"
     let $list = $('<div class="list-group-item list-group-item-action d-flex"><div style="width: 90%; margin-right: auto;">' + segInfo.model_nm + segInfoStr +'</div></div>');
     const $btnTag =$( '<button type="button" class="btn btn-sm btn-danger float-right m-0 removeSeg" value="' 
     + segId+'">삭제</button>').on("click", function () {
