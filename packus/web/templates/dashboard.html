@@ -172,91 +172,77 @@
 <!--          </div>-->
         </div>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-12">
             <div class="card ">
               <div class="card-header ">
-                <h5 class="card-title">Users Behavior</h5>
+<!--                <h5 class="card-title">각 Life Stage(가입일) 회원 정보</h5>-->
                 <p class="card-category">각 Life Stage(가입일) 회원 정보</p>
               </div>
-              <div class="card-body ">
-                <canvas id=chartHours width="400" height="100"></canvas>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-history"></i> Updated 3 minutes ago
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card ">
-              <div class="card-header ">
-                <h5 class="card-title">전체매출 추이</h5>
-                <p class="card-category">월별 전체매출 추이</p>
-              </div>
-              <div class="card-body ">
-                <canvas id="" width="400" height="100"></canvas>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-history"></i> Updated 3 minutes ago
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <div class="card-header ">
-                <h5 class="card-title">업종 비율</h5>
-                <p class="card-category">업종 비율</p>
-              </div>
-              <div class="card-body ">
-                <canvas id="" width="400" height="100"></canvas>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-history"></i> Updated 3 minutes ago
-                </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/16e68970-d2cc-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-4">
             <div class="card">
               <div class="card-header ">
-                <h5 class="card-title">전체회원의 RFM Histogram</h5>
-                <p class="card-category">Recency, Frequency, Monetary</p>
+<!--                <h5 class="card-title">전체회원의 RFM Histogram(Recency) - Class 1</h5>-->
+                <p class="card-category">전체회원의 RFM Histogram(Recency)</p>
               </div>
-              <div class="card-body ">
-                <canvas id=""></canvas>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/58684050-d2cc-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
               </div>
             </div>
           </div>
-<!--          <div class="col-md-8">-->
-<!--            <div class="card card-chart">-->
-<!--              <div class="card-header">-->
-<!--                <h5 class="card-title">NASDAQ: AAPL</h5>-->
-<!--                <p class="card-category">Line Chart with Points</p>-->
-<!--              </div>-->
-<!--              <div class="card-body">-->
-<!--                <canvas id="speedChart" width="400" height="100"></canvas>-->
-<!--              </div>-->
-<!--              <div class="card-footer">-->
-<!--                <div class="chart-legend">-->
-<!--                  <i class="fa fa-circle text-info"></i> Tesla Model S-->
-<!--                  <i class="fa fa-circle text-warning"></i> BMW 5 Series-->
-<!--                </div>-->
-<!--                <hr />-->
-<!--                <div class="card-stats">-->
-<!--                  <i class="fa fa-check"></i> Data information certified-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header ">
+<!--                <h5 class="card-title">전체회원의 RFM Histogram(Recency) - Class 1</h5>-->
+                <p class="card-category">전체회원의 RFM Histogram(Frequency)</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/8f268890-d2cc-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header ">
+<!--                <h5 class="card-title">전체회원의 RFM Histogram(Recency) - Class 1</h5>-->
+                <p class="card-category">전체회원의 RFM Histogram(Monetary)</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/1d518880-d2ce-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card ">
+              <div class="card-header ">
+<!--                <h5 class="card-title">전체매출 추이</h5>-->
+                <p class="card-category">월별 전체매출 추이</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/7a5e2e70-d2ce-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header ">
+<!--                <h5 class="card-title">업종 비율</h5>-->
+                <p class="card-category">업종 비율</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/9fee1e20-d2ce-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
 <!--      <footer class="footer footer-black  footer-white ">-->
