@@ -66,185 +66,199 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="row">
-<!--          <div class="col-lg-3 col-md-6 col-sm-6">-->
-<!--            <div class="card card-stats">-->
-<!--              <div class="card-body ">-->
-<!--                <div class="row">-->
-<!--                  <div class="col-5 col-md-4">-->
-<!--                    <div class="icon-big text-center icon-warning">-->
-<!--                      <i class="nc-icon nc-globe text-warning"></i>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <div class="col-7 col-md-8">-->
-<!--                    <div class="numbers">-->
-<!--                      <p class="card-category">Capacity</p>-->
-<!--                      <p class="card-title">150GB<p>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="card-footer ">-->
-<!--                <hr>-->
-<!--                <div class="stats">-->
-<!--                  <i class="fa fa-refresh"></i>-->
-<!--                  Update Now-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="col-lg-3 col-md-6 col-sm-6">-->
-<!--            <div class="card card-stats">-->
-<!--              <div class="card-body ">-->
-<!--                <div class="row">-->
-<!--                  <div class="col-5 col-md-4">-->
-<!--                    <div class="icon-big text-center icon-warning">-->
-<!--                      <i class="nc-icon nc-money-coins text-success"></i>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <div class="col-7 col-md-8">-->
-<!--                    <div class="numbers">-->
-<!--                      <p class="card-category">Revenue</p>-->
-<!--                      <p class="card-title">$ 1,345<p>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="card-footer ">-->
-<!--                <hr>-->
-<!--                <div class="stats">-->
-<!--                  <i class="fa fa-calendar-o"></i>-->
-<!--                  Last day-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="col-lg-3 col-md-6 col-sm-6">-->
-<!--            <div class="card card-stats">-->
-<!--              <div class="card-body ">-->
-<!--                <div class="row">-->
-<!--                  <div class="col-5 col-md-4">-->
-<!--                    <div class="icon-big text-center icon-warning">-->
-<!--                      <i class="nc-icon nc-vector text-danger"></i>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <div class="col-7 col-md-8">-->
-<!--                    <div class="numbers">-->
-<!--                      <p class="card-category">Errors</p>-->
-<!--                      <p class="card-title">23<p>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="card-footer ">-->
-<!--                <hr>-->
-<!--                <div class="stats">-->
-<!--                  <i class="fa fa-clock-o"></i>-->
-<!--                  In the last hour-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="col-lg-3 col-md-6 col-sm-6">-->
-<!--            <div class="card card-stats">-->
-<!--              <div class="card-body ">-->
-<!--                <div class="row">-->
-<!--                  <div class="col-5 col-md-4">-->
-<!--                    <div class="icon-big text-center icon-warning">-->
-<!--                      <i class="nc-icon nc-favourite-28 text-primary"></i>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <div class="col-7 col-md-8">-->
-<!--                    <div class="numbers">-->
-<!--                      <p class="card-category">Followers</p>-->
-<!--                      <p class="card-title">+45K<p>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="card-footer ">-->
-<!--                <hr>-->
-<!--                <div class="stats">-->
-<!--                  <i class="fa fa-refresh"></i>-->
-<!--                  Update now-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
           <div class="col-md-4">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">차트 1</h5>
+<!--                <h5 class="card-title">차트 1</h5>-->
                 <p class="card-category">Lift stage(회원가입 시기)를 고려한 RFM 세그멘테이션</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/22cb97e0-d2d0-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-category">Class 변동 회원(반기마다 update)</p>
               </div>
               <div class="card-body"></div>
             </div>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-4">
             <div class="card">
-              <div class="card-header"></div>
+              <div class="card-header">
+                <p class="card-category">클래스별 RFM 분포</p>
+              </div>
               <div class="card-body"></div>
             </div>
           </div>
         </div>
+        <hr>
         <div class="row">
           <div class="col-md-4">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">차트 2</h5>
-                <p class="card-category">Lift stage(회원가입 시기)를 고려한 RFM 세그멘테이션</p>
+                <p class="card-category">Class 1 - Recency</p>
               </div>
-              <div class="card-body"></div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/91627200-d2d0-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
             </div>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-4">
             <div class="card">
-              <div class="card-header"></div>
-              <div class="card-body"></div>
+              <div class="card-header">
+                <p class="card-category">Class 1 - Frequency</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/483656e0-d2d1-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-category">Class 1 - Monetary</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/bdd6cbf0-d2d1-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
             </div>
           </div>
         </div>
+        <hr>
         <div class="row">
           <div class="col-md-4">
-            <div class="card ">
-              <div class="card-header ">
-                <h5 class="card-title">Email Statistics</h5>
-                <p class="card-category">Last Campaign Performance</p>
+            <div class="card">
+              <div class="card-header">
+                <p class="card-category">Class 2 - Recency</p>
               </div>
-              <div class="card-body ">
-                <canvas id="chartEmail"></canvas>
-              </div>
-              <div class="card-footer ">
-                <div class="legend">
-                  <i class="fa fa-circle text-primary"></i> Opened
-                  <i class="fa fa-circle text-warning"></i> Read
-                  <i class="fa fa-circle text-danger"></i> Deleted
-                  <i class="fa fa-circle text-gray"></i> Unopened
-                </div>
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-calendar"></i> Number of emails sent
-                </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/06242a60-d2d2-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
               </div>
             </div>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-category">Class 2 - Frequency</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/0fc84650-d2d2-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-category">Class 2 - Monetary</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/1a812da0-d2d2-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-category">Class 3 - Recency</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/29dff650-d2d2-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-category">Class 3 - Frequency</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/7c436c60-d2d2-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-category">Class 3 - Monetary</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/8a10e6b0-d2d2-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-category">Class 4 - Recency</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/97fcbe70-d2d2-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-category">Class 4 - Frequency</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/a71d6cb0-d2d2-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-category">Class 4 - Monetary</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/b0dbee70-d2d2-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-6">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-title">NASDAQ: AAPL</h5>
-                <p class="card-category">Line Chart with Points</p>
+                <p class="card-category">매출 추이(집단 1 vs 그 외 집단)</p>
               </div>
-              <div class="card-body">
-                <canvas id="speedChart" width="400" height="100"></canvas>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/5473d070-d2d3-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
               </div>
-              <div class="card-footer">
-                <div class="chart-legend">
-                  <i class="fa fa-circle text-info"></i> Tesla Model S
-                  <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                </div>
-                <hr />
-                <div class="card-stats">
-                  <i class="fa fa-check"></i> Data information certified
-                </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card card-chart">
+              <div class="card-header">
+                <p class="card-category">업종</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/023e4830-d2d3-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-chart">
+              <div class="card-header">
+                <p class="card-category">고객리스트</p>
+              </div>
+              <div class="card-body p-0" style="height: 350px;">
+                <iframe src="http://52.78.186.240:8011/s/packus/goto/beb1c8c07a546a6206ca3ba160daae09" height="100%" width="100%"></iframe>
+<!--                <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/discover/46199260-d2c6-11ea-83ec-578bbedbe7b6?_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))" height="100%" width="100%"></iframe>-->
               </div>
             </div>
           </div>
