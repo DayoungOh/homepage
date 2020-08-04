@@ -174,14 +174,14 @@ def get_segments_data():
               if sales_validator(sales_cond, item['sales_sum']['value'])]
 
         chart1_data.append(len(re))
-        chart2_data.append(len(re)/total_mem_count)
+        chart2_data.append(round(len(re)/total_mem_count, 4))
 
         df = pd.DataFrame(re)
         df.fillna(0, inplace=True)
         table_data.append({
-            'recency': df['recency'].mean(),
-            'monetary': df['monetary'].mean(),
-            'frequency': df['frequency'].mean(),
+            'recency': round(df['recency'].mean(), 0),
+            'monetary': round(df['monetary'].mean(), 0),
+            'frequency': round(df['frequency'].mean(), 1),
         })
         df['recency_g'] = df['recency'].apply(recency_by)
         df['frequency_g'] = df['frequency'].apply(frequency_by)
