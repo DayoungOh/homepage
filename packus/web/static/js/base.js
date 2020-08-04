@@ -17,6 +17,7 @@ const Base = {
     Base.loadUpjongList();
     Base.loadSegList();
     Base.initCheckbox();
+    Base.loadSegDashboardData();
   },
 
   segInfo: {
@@ -142,7 +143,7 @@ const Base = {
       },
     });
   },
-  loadSegDashboard: function () {
+  loadSegDashboardData: function () {
     const segCond = { // 조건 예시 데이터
       "search_cond_list": [
         {"datefrom": "2017-01-01", "dateto" :"2020-05-01", "upjong3_nm": "일반한식/백반", "sales_cond": "30 - 50만원"},
