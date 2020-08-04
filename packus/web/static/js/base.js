@@ -142,6 +142,29 @@ const Base = {
       },
     });
   },
+  loadSegDashboard: function () {
+    const segCond = { // 조건 예시 데이터
+      "search_cond_list": [
+        {"datefrom": "2017-01-01", "dateto" :"2020-05-01", "upjong3_nm": "일반한식/백반", "sales_cond": "30 - 50만원"},
+        {"datefrom": "2017-01-01", "dateto" :"2020-05-01", "upjong3_nm": "갈비/삼겹살", "sales_cond": "5 - 15만원"},
+        {"datefrom": "2017-01-01", "dateto" :"2020-05-01", "upjong3_nm": "게장전문", "sales_cond": "30 - 50만원"}
+      ]
+    }
+    $.ajax({
+      type: "post",
+      url: "/api/segments/dashboard-data",
+      dataType: 'json', // for response
+      contentType: 'application/json', // for request
+      data:  JSON.stringify(segCond),
+      success: function (resp) {
+        // 받은 response를 이용해 작업
+        console.log(resp)
+      },
+      error: function () {
+        alert("세그먼트 데이터를 가져오지 못했습니다.");
+      },
+    });
+  }
 };
 
 Base.init();
