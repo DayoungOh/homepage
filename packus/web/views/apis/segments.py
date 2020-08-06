@@ -77,14 +77,9 @@ def get_upjong_list():
 def get_segments_data():
     """세그먼트 대시보드를 위한 데이터 가져오기
     자세한 사용 방법은 README 참고
-    
     """
-    print(request.data)
-    # search_cond_list = request.form['search_cond_list']
-    # 테스트로 json 사용
     search_cond_list = request.json['search_cond_list']
     
-
     es = get_es_conn()
     chart1_data = []
     chart2_data = []
@@ -174,7 +169,7 @@ def get_segments_data():
               if sales_validator(sales_cond, item['sales_sum']['value'])]
 
         chart1_data.append(len(re))
-        chart2_data.append(round(len(re)/total_mem_count, 4))
+        chart2_data.append(round(len(re)/total_mem_count, 4) * 100)
 
         df = pd.DataFrame(re)
         df.fillna(0, inplace=True)
