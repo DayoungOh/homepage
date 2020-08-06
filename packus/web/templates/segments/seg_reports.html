@@ -85,11 +85,21 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
+                                <label for="segmentSelect0">세그먼트 모델 선택</label>
+                                <select class="form-control" id="segmentSelect0">
+                                    <option value="1">모델 1</option>
+                                    <option value="2">모델 2</option>
+                                    <option value="3">모델 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
                                 <label for="segmentSelect1">세그먼트 모델 선택</label>
                                 <select class="form-control" id="segmentSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                  <option value="1">모델 1</option>
+                                  <option value="2">모델 2</option>
+                                  <option value="3">모델 3</option>
                                 </select>
                             </div>
                         </div>
@@ -97,19 +107,9 @@
                             <div class="form-group">
                                 <label for="segmentSelect2">세그먼트 모델 선택</label>
                                 <select class="form-control" id="segmentSelect2">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="segmentSelect3">세그먼트 모델 선택</label>
-                                <select class="form-control" id="segmentSelect3">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                  <option value="1">모델 1</option>
+                                  <option value="2">모델 2</option>
+                                  <option value="3">모델 3</option>
                                 </select>
                             </div>
                         </div>
@@ -120,7 +120,7 @@
     </div>
     <div class="row">
         <div class="col align-self-end">
-            <button class="btn btn-primary m-0">조회</button>
+            <button class="btn btn-primary m-0" id="surf-btn" onclick="">조회</button>
         </div>
     </div>
     <hr />
@@ -129,11 +129,11 @@
             <div class="card">
                 <div class="card-body d-flex">
                     <div class="col w-50" style="border: 1px solid #eee;">
-                        <p class="mt-2" style="font-size: 15px; font-weight: 600;">1. 선택한 세그먼트별 회원 수(명)</p>
+                        <p class="mt-2" style="font-size: 15px; font-weight: 600;">선택한 세그먼트별 회원 수(명)</p>
                         <canvas id="myChart1"></canvas>
                     </div>
                     <div class="col w-50" style="border: 1px solid #eee;">
-                        <p class="mt-2" style="font-size: 15px; font-weight: 600;">2. 전체 회원 대비 비율</p>
+                        <p class="mt-2" style="font-size: 15px; font-weight: 600;">전체 회원 대비 비율</p>
                         <canvas id="myChart2"></canvas>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
         <div class="col-md-12 col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-striped text-center">
+                    <table class="table table-striped text-center" id="rfm-tb">
                       <thead class="border-top">
                         <tr>
                           <th scope="col">모델명</th>
@@ -157,25 +157,25 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row">모델명 1</th>
-                          <td>300</td>
-                          <td>평균 5일 전 구매</td>
-                          <td>평균 1.4회 구매</td>
-                          <td>평균 180,624 지출</td>
+                          <th scope="row"></th>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
                       </tr>
                       <tr>
-                          <th scope="row">모델명 2</th>
-                          <td>200</td>
-                          <td>평균 3일 전 구매</td>
-                          <td>평균 1회 구매</td>
-                          <td>평균 200,375 지출</td>
+                          <th scope="row"></th>
+                          <td></td>
+                          <td></td>
+                          <td><td>
+                          <td></td>
                       </tr>
                       <tr>
-                          <th scope="row">모델명 3</th>
-                          <td>200</td>
-                          <td>평균 1일 전 구매</td>
-                          <td>평균 4회 구매</td>
-                          <td>평균 156,375 지출</td>
+                          <th scope="row"></th>
+                          <td></td>
+                          <td></td>
+                          <td><td>
+                          <td></td>
                       </tr>
                       </tbody>
                     </table>

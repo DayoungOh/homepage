@@ -1,5 +1,6 @@
 import $, { ajax } from "jquery";
 import "../css/base.scss";
+import chartOptions from "./chart"
 
 const Base = {
   init: function () {
@@ -151,6 +152,15 @@ const Base = {
         {"datefrom": "2017-01-01", "dateto" :"2020-05-01", "upjong3_nm": "게장전문", "sales_cond": "30 - 50만원"}
       ]
     }
+
+    let selectedSeg0 = $('#segmentSelect0 option:selected').text();
+    let selectedSeg1 = $('#segmentSelect1 option:selected').text();
+    let selectedSeg2 = $('#segmentSelect2 option:selected').text();
+
+    $('#rfm-tb').find('tbody tr:nth-child(1) th').text(selectedSeg0);
+    $('#rfm-tb').find('tbody tr:nth-child(2) th').text(selectedSeg1);
+    $('#rfm-tb').find('tbody tr:nth-child(3) th').text(selectedSeg2);
+
     $.ajax({
       type: "post",
       url: "/api/segments/dashboard-data",
@@ -160,10 +170,31 @@ const Base = {
       success: function (resp) {
         // 받은 response를 이용해 작업
         console.log(resp)
+
+        const tr0 = '<th scope="row">'+ selectedSeg0 + '</th>'
+                + '<td> ' + resp.table[0].mem_count + '명</td>'
+                + '<td>평균 ' + resp.table[0].recency + '일 전 구매</td>'
+                + '<td>평균 ' + resp.table[0].frequency + '회 구매</td>'
+                + '<td>평균 ' + resp.table[0].monetary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '원 지출</td>';
+        const tr1 = '<th scope="row">'+ selectedSeg1 + '</th>'
+                + '<td> ' + resp.table[1].mem_count + '명</td>'
+                + '<td>평균 ' + resp.table[1].recency + '일 전 구매</td>'
+                + '<td>평균 ' + resp.table[1].frequency + '회 구매</td>'
+                + '<td>평균 ' + resp.table[1].monetary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '원 지출</td>';
+        const tr2 = '<th scope="row">'+ selectedSeg2 + '</th>'
+                + '<td> ' + resp.table[2].mem_count + '명</td>'
+                + '<td>평균 ' + resp.table[2].recency + '일 전 구매</td>'
+                + '<td>평균 ' + resp.table[2].frequency + '회 구매</td>'
+                + '<td>평균 ' + resp.table[2].monetary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '원 지출</td>'; 
+
+        $('#rfm-tb').find('tbody tr:nth-child(1)').html(tr0);
+        $('#rfm-tb').find('tbody tr:nth-child(2)').html(tr1);
+        $('#rfm-tb').find('tbody tr:nth-child(3)').html(tr2);
+
         var myChart1 = new Chart('myChart1', {
           type: 'bar',
           data: {
-              labels: ['모델1', '모델2', '모델3'],
+              labels: [selectedSeg0, selectedSeg1, selectedSeg2],
               datasets: [{
                   label: '회원 수',
                   backgroundColor: '#82ccdd',
@@ -171,31 +202,13 @@ const Base = {
                   data: [resp.chart1[0], resp.chart1[1], resp.chart1[2]]
               }]
           },
-          options: {
-              tooltips: {
-                callbacks: {
-                    label: function(tooltipItem, data) {
-                        var label = data.datasets[tooltipItem.datasetIndex].label || '';
-                        var value = tooltipItem.value;
-                        var unit = '명';
-                        return label + ': ' + value + unit;
-                    }
-                }
-            },
-            scales: {
-                yAxes: [{
-                  ticks: {
-                    baseAtZero: true
-                  }
-                }]
-            }
-          }
+          options: chartOptions.segBarChartOption1
         });
 
         var myChart2 = new Chart('myChart2', {
             type: 'horizontalBar',
             data: {
-                labels: ['중국음식점', '일반한식', '치킨집'],
+                labels: [selectedSeg0, selectedSeg1, selectedSeg2],
                 datasets: [{
                     label: '전체회원 대비 비율',
                     backgroundColor: '#82ccdd',
@@ -203,60 +216,143 @@ const Base = {
                     data: [resp.chart2[0], resp.chart2[1], resp.chart2[2]]
                 }]
             },
-            options: {
-                  tooltips: {
-                    callbacks: {
-                        label: function(tooltipItem, data) {
-                            var label = data.datasets[tooltipItem.datasetIndex].label || '';
-                            var value = tooltipItem.value;
-                            var unit = '%';
-                            return label + ': ' + value + unit;
-                        }
-                    }
-                },
-                scales: {
-                    yAxes: [{
-                      ticks: {
-                        baseAtZero: true
-                      }
-                    }]
-                }
-             }
+            options: chartOptions.segBarChartOption2
         });
-
-        var chart3_label_array = new Array();
-        var chart3_data_array = new Array();
-
-        for(var i = 0; i < resp.chart3[0].recency.label.length; i++) {
-            chart3_label_array[i] = "" + resp.chart3[0].recency.label[i] + "";
-        }
-        for(var i = 0; i < resp.chart3[0].recency.data.length; i++) {
-            chart3_data_array[i] = resp.chart3[0].recency.data[i];
-        }
-        var chart3_label = chart3_label_array.toString();
-        var chart3_data = chart3_data_array.toString();
 
         var myChart3 = new Chart('myChart3', {
             type: 'bar',
             data: {
-                labels: [resp.chart3[0].recency.label.toString()],
+                labels: resp.chart3[0].recency.label,
                 datasets: [{
                     label: '회원 수',
                     backgroundColor: '#6a89cc',
                     borderColor: '#6a89cc',
-                    data: [resp.chart3[0].recency.data.toString()]
+                    data: resp.chart3[0].recency.data
                 }]
             },
-            options: {
-                scales: {
-                    yAxes: [{
-                      ticks: {
-                        baseAtZero: true
-                      }
-                    }]
-                }
-            }
+            options: chartOptions.segBarChartOption1
         });
+
+        var myChart4 = new Chart('myChart4', {
+          type: 'bar',
+          data: {
+              labels: resp.chart3[0].frequency.label,
+              datasets: [{
+                  label: '회원 수',
+                  backgroundColor: '#6a89cc',
+                  borderColor: '#6a89cc',
+                  data: resp.chart3[0].frequency.data
+              }]
+          },
+          options: chartOptions.segBarChartOption1
+        });
+
+        var myChart5 = new Chart('myChart5', {
+          type: 'bar',
+          data: {
+              labels: resp.chart3[0].monetary.label,
+              datasets: [{
+                  label: '회원 수',
+                  backgroundColor: '#6a89cc',
+                  borderColor: '#6a89cc',
+                  data: resp.chart3[0].monetary.data
+              }]
+          },
+          options: chartOptions.segBarChartOption1
+        });
+
+        var myChart6 = new Chart('myChart6', {
+          type: 'bar',
+          data: {
+              labels: resp.chart3[1].recency.label,
+              datasets: [{
+                  label: '회원 수',
+                  backgroundColor: '#6a89cc',
+                  borderColor: '#6a89cc',
+                  data: resp.chart3[1].recency.data
+              }]
+          },
+          options: chartOptions.segBarChartOption1
+        });
+
+        var myChart7 = new Chart('myChart7', {
+          type: 'bar',
+          data: {
+              labels: resp.chart3[1].frequency.label,
+              datasets: [{
+                  label: '회원 수',
+                  backgroundColor: '#6a89cc',
+                  borderColor: '#6a89cc',
+                  data: resp.chart3[1].frequency.data
+              }]
+          },
+          options: chartOptions.segBarChartOption1
+        });
+
+        var myChart8 = new Chart('myChart8', {
+          type: 'bar',
+          data: {
+              labels: resp.chart3[1].monetary.label,
+              datasets: [{
+                  label: '회원 수',
+                  backgroundColor: '#6a89cc',
+                  borderColor: '#6a89cc',
+                  data: resp.chart3[1].monetary.data
+              }]
+          },
+          options: chartOptions.segBarChartOption1
+        });
+
+        var myChart9 = new Chart('myChart9', {
+          type: 'bar',
+          data: {
+              labels: resp.chart3[2].recency.label,
+              datasets: [{
+                  label: '회원 수',
+                  backgroundColor: '#6a89cc',
+                  borderColor: '#6a89cc',
+                  data: resp.chart3[2].recency.data
+              }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                    ticks: {
+                      baseAtZero: true
+                    }
+                  }]
+              }
+          }
+        });
+
+        var myChart10 = new Chart('myChart10', {
+          type: 'bar',
+          data: {
+              labels: resp.chart3[2].frequency.label,
+              datasets: [{
+                  label: '회원 수',
+                  backgroundColor: '#6a89cc',
+                  borderColor: '#6a89cc',
+                  data: resp.chart3[2].frequency.data
+              }]
+          },
+          options: chartOptions.segBarChartOption1
+        });
+
+        var myChart11 = new Chart('myChart11', {
+          type: 'bar',
+          data: {
+              labels: resp.chart3[2].monetary.label,
+              datasets: [{
+                  label: '회원 수',
+                  backgroundColor: '#6a89cc',
+                  borderColor: '#6a89cc',
+                  data: resp.chart3[2].monetary.data
+              }]
+          },
+          options: chartOptions.segBarChartOption1
+        });
+
       },
       error: function () {
         alert("세그먼트 데이터를 가져오지 못했습니다.");
@@ -271,6 +367,10 @@ const Base = {
 
 Base.init();
 
+$('#surf-btn').on('click', function() {
+  debugger;
+  Base.loadSegDashboardData();
+});
 
 
 
