@@ -104,13 +104,19 @@ def get_segments_data():
     for search_cond in search_cond_list:
         datefrom = search_cond['datefrom']
         dateto = search_cond['dateto']
-        upjong3_nm = search_cond['upjong3_nm']
+        upjong3_nm = search_cond['upjong3_nm'].split(',')
         sales_cond = search_cond['sales_cond']
         body = {
             'query': {
                 'bool': {
                     'must':  [
-                        {'match': {'upjong3_nm': upjong3_nm}},
+                        {
+                            'bool': {
+                                'should': [
+                                    {'match': {'upjong3_nm': item}} for item in upjong3_nm
+                                ]
+                            }
+                        }
                     ],
                     'filter': [{
                         "range": {
@@ -155,6 +161,7 @@ def get_segments_data():
 
             }
         }
+        print(body)
         data = es.search(
             index="packus-ecommerce-*",
             body=body
@@ -169,11 +176,12 @@ def get_segments_data():
               if sales_validator(sales_cond, item['sales_sum']['value'])]
 
         chart1_data.append(len(re))
-        chart2_data.append(round(len(re)/total_mem_count, 4) * 100)
+        chart2_data.append(round(len(re)/total_mem_count* 100, 2))
 
         df = pd.DataFrame(re)
         df.fillna(0, inplace=True)
         table_data.append({
+            'mem_count': len(re),
             'recency': round(df['recency'].mean(), 0),
             'monetary': round(df['monetary'].mean(), 0),
             'frequency': round(df['frequency'].mean(), 1),

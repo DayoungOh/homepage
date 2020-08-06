@@ -39,7 +39,7 @@
     ```
     {
         "search_cond_list": [
-            {"datefrom": "2019-01-01", "dateto" :"2020-05-01", "upjong3_nm": "일반한식/백반", "sales_cond": "30 - 50만원"},
+            {"datefrom": "2019-01-01", "dateto" :"2020-05-01", "upjong3_nm": "일반한식/백반,게장전문", "sales_cond": "30 - 50만원"},
             {"datefrom": "2018-01-01", "dateto" :"2019-05-01", "upjong3_nm": "일반한식/백반", "sales_cond": "5 - 15만원"},
             {"datefrom": "2018-01-01", "dateto" :"2020-05-01", "upjong3_nm": "일반한식/백반", "sales_cond": "30 - 50만원"}
         ]
@@ -101,16 +101,19 @@
       "table": [
         {
           "frequency": 4,
+          "mem_count": 146,
           "monetary": 449915,
           "recency": 188.1
         },
         {
           "frequency": 1,
+          "mem_count": 305,
           "monetary": 161080,
           "recency": 534.7
         },
         {
           "frequency": 3,
+          "mem_count": 187,
           "monetary": 367195,
           "recency": 277.7
         }
