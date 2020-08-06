@@ -4,6 +4,11 @@
 
 * 개발 환경에 requirements 파일에 있는 패키지 설치
  
+### 서버에서 static 파일 빌드, flask 애플리케이션 재시작하기
+- 서버에서 `git pull`을 통해 코드를 받은 후, static 파일 빌드, flask 앱 재시작하기
+- `packus/restart_server.sh` 파일을 실행한다.
+  - `$source /home/ubuntu/workplace/packus-dashboard/packus/restart_server.sh`
+
 ### static 파일 설정 - webpack 등
 
 * `static` 디렉토리 안에서 `npm install` 실행
