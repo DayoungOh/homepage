@@ -105,7 +105,7 @@ def get_segments_data():
         datefrom = search_cond['datefrom']
         dateto = search_cond['dateto']
         upjong3_nm = search_cond['upjong3_nm'].split(',')
-        sales_cond = search_cond['sales_cond']
+        sales_cond = search_cond['sales_cond'].split(',')
         body = {
             'query': {
                 'bool': {
@@ -161,7 +161,6 @@ def get_segments_data():
 
             }
         }
-        print(body)
         data = es.search(
             index="packus-ecommerce-*",
             body=body
@@ -178,43 +177,63 @@ def get_segments_data():
         chart1_data.append(len(re))
         chart2_data.append(round(len(re)/total_mem_count* 100, 2))
 
-        df = pd.DataFrame(re)
-        df.fillna(0, inplace=True)
-        table_data.append({
-            'mem_count': len(re),
-            'recency': round(df['recency'].mean(), 0),
-            'monetary': round(df['monetary'].mean(), 0),
-            'frequency': round(df['frequency'].mean(), 1),
-        })
-        df['recency_g'] = df['recency'].apply(recency_by)
-        df['frequency_g'] = df['frequency'].apply(frequency_by)
-        df['monetary_g'] = df['monetary'].apply(monetary_by)
+        if len(re) > 0:
+            df = pd.DataFrame(re)
+            df.fillna(0, inplace=True)
+            table_data.append({
+                'mem_count': len(re),
+                'recency': round(df['recency'].mean(), 0),
+                'monetary': round(df['monetary'].mean(), 0),
+                'frequency': round(df['frequency'].mean(), 1),
+            })
+            df['recency_g'] = df['recency'].apply(recency_by)
+            df['frequency_g'] = df['frequency'].apply(frequency_by)
+            df['monetary_g'] = df['monetary'].apply(monetary_by)
 
-        df_r = df[['n_memno', 'recency_g']].groupby('recency_g').count()
-        df_f = df[['n_memno', 'frequency_g']].groupby('frequency_g').count()
-        df_m = df[['n_memno', 'monetary_g']].groupby('monetary_g').count()
+            df_r = df[['n_memno', 'recency_g']].groupby('recency_g').count()
+            df_f = df[['n_memno', 'frequency_g']].groupby('frequency_g').count()
+            df_m = df[['n_memno', 'monetary_g']].groupby('monetary_g').count()
 
-        dict_r = df_r.to_dict()['n_memno']
-        li_r = [68,136,204,272,340,408,476,544,612,680,748,816,884,952,1020,1088,1156,1224]
-        li_r_str = [ "< " + str(i) for i in li_r]
-        li_r_str.append(str(li_r[-1]) + " 이상" )
-        
-        dict_f = df_f.to_dict()['n_memno']
-        li_f = [3, 5, 7, 9, 11, 21]
-        li_f_str = [ "< " + str(i) for i in li_f]
-        li_f_str.append(str(li_f[-1]) + " 이상" )
-        
-        dict_m = df_m.to_dict()['n_memno']
-        li_m = [215000, 385000, 555000, 725000, 895000, 1065000, 1235000,
-          1405000, 1575000, 1745000, 1915000, 2085000, 2255000]
-        li_m_str = [ "< " + str(i) for i in li_m]
-        li_m_str.append(str(li_m[-1]) + " 이상" )
-        
-        chart3_data.append({
-            'recency': {'label': li_r_str, 'data': [ (dict_r[i] if i in dict_r else 0) for i in li_r_str]},
-            'frequency': {'label': li_f_str, 'data': [ (dict_f[i] if i in dict_f else 0) for i in li_f_str]},
-            'monetary': {'label': li_m_str, 'data': [ (dict_m[i] if i in dict_m else 0) for i in li_m_str]},
-        })
+            dict_r = df_r.to_dict()['n_memno']
+            li_r = [68,136,204,272,340,408,476,544,612,680,748,816,884,952,1020,1088,1156,1224]
+            li_r_str = [ "< " + str(i) for i in li_r]
+            li_r_str.append(str(li_r[-1]) + " 이상" )
+            
+            dict_f = df_f.to_dict()['n_memno']
+            li_f = [3, 5, 7, 9, 11, 21]
+            li_f_str = [ "< " + str(i) for i in li_f]
+            li_f_str.append(str(li_f[-1]) + " 이상" )
+            
+            dict_m = df_m.to_dict()['n_memno']
+            li_m = [215000, 385000, 555000, 725000, 895000, 1065000, 1235000,
+            1405000, 1575000, 1745000, 1915000, 2085000, 2255000]
+            li_m_str = [ "< " + str(i) for i in li_m]
+            li_m_str.append(str(li_m[-1]) + " 이상" )
+            
+            chart3_data.append({
+                'recency': {'label': li_r_str, 'data': [ (dict_r[i] if i in dict_r else 0) for i in li_r_str]},
+                'frequency': {'label': li_f_str, 'data': [ (dict_f[i] if i in dict_f else 0) for i in li_f_str]},
+                'monetary': {'label': li_m_str, 'data': [ (dict_m[i] if i in dict_m else 0) for i in li_m_str]},
+            })
+        else:
+            table_data.append({
+                'mem_count': 0,
+                'recency': 0,
+                'monetary': 0,
+                'frequency': 0,
+            })
+            li_r = [68,136,204,272,340,408,476,544,612,680,748,816,884,952,1020,1088,1156,1224]
+            li_r_str = [ "< " + str(i) for i in li_r]
+            li_f = [3, 5, 7, 9, 11, 21]
+            li_f_str = [ "< " + str(i) for i in li_f]
+            li_m = [215000, 385000, 555000, 725000, 895000, 1065000, 1235000,
+            1405000, 1575000, 1745000, 1915000, 2085000, 2255000]
+            li_m_str = [ "< " + str(i) for i in li_m]
+            chart3_data.append({
+                'recency': {'label': li_r_str, 'data': [0] * len(li_r_str)},
+                'frequency': {'label': li_f_str, 'data': [0] * len(li_f_str)},
+                'monetary': {'label': li_m_str, 'data': [0] * len(li_m_str)},
+            }) 
     return jsonify({
         'chart1': chart1_data,
         'chart2': chart2_data,
@@ -226,19 +245,21 @@ def get_segments_data():
 def sales_validator(sales_cond, sales):
     """get_segments_data에서 사용되는 함수
     """
-    if sales_cond == '100만원 이상':
-        return sales >= 1000000
-    elif sales_cond == '50 - 100만원':
-        return sales >= 500000 and sales < 1000000
-    elif sales_cond == '30 - 50만원':
-        return sales >= 300000 and sales < 500000
-    elif sales_cond == '15 - 30만원':
-        return sales >= 150000 and sales < 300000
-    elif sales_cond == '5 - 15만원':
-        return sales >= 50000 and sales < 150000
-    elif sales_cond == '5만원 미만':
-        return sales < 50000
-    return False
+    i = 0
+    for cond in sales_cond:
+        if cond == '100만원 이상':
+            i += (sales >= 1000000)
+        elif cond == '50 - 100만원':
+            i += (sales >= 500000 and sales < 1000000)
+        elif cond == '30 - 50만원':
+            i += (sales >= 300000 and sales < 500000)
+        elif cond == '15 - 30만원':
+            i += (sales >= 150000 and sales < 300000)
+        elif cond == '5 - 15만원':
+            i += (sales >= 50000 and sales < 150000)
+        elif cond == '5만원 미만':
+            i += (sales < 50000)
+    return i > 0
 
 
 def recency_by(x):

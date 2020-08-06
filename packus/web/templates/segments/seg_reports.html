@@ -71,14 +71,14 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-group">
-                                <label for="exampleAnalysisTermSelectFrom">분석기간 선택</label>
-                                <input type="date" class="form-control" name="from" id="exampleAnalysisTermSelectFrom">
+                                <label for="termSelectFrom">분석기간 선택</label>
+                                <input type="date" class="form-control" name="from" id="termSelectFrom">
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div class="form-group">
-                                <label for="exampleAnalysisTermSelectTo"></label>
-                                <input type="date" class="form-control mt-2" name="to" id="exampleAnalysisTermSelectTo">
+                                <label for="termSelectTo"></label>
+                                <input type="date" class="form-control mt-2" name="to" id="termSelectTo">
                             </div>
                         </div>
                     </div>
@@ -87,9 +87,6 @@
                             <div class="form-group">
                                 <label for="segmentSelect0">세그먼트 모델 선택</label>
                                 <select class="form-control" id="segmentSelect0">
-                                    <option value="1">모델 1</option>
-                                    <option value="2">모델 2</option>
-                                    <option value="3">모델 3</option>
                                 </select>
                             </div>
                         </div>
@@ -97,9 +94,6 @@
                             <div class="form-group">
                                 <label for="segmentSelect1">세그먼트 모델 선택</label>
                                 <select class="form-control" id="segmentSelect1">
-                                  <option value="1">모델 1</option>
-                                  <option value="2">모델 2</option>
-                                  <option value="3">모델 3</option>
                                 </select>
                             </div>
                         </div>
@@ -107,9 +101,6 @@
                             <div class="form-group">
                                 <label for="segmentSelect2">세그먼트 모델 선택</label>
                                 <select class="form-control" id="segmentSelect2">
-                                  <option value="1">모델 1</option>
-                                  <option value="2">모델 2</option>
-                                  <option value="3">모델 3</option>
                                 </select>
                             </div>
                         </div>
@@ -123,6 +114,7 @@
             <button class="btn btn-primary m-0" id="surf-btn" onclick="">조회</button>
         </div>
     </div>
+    <div class="d-none" id="chartContainer"> 
     <hr />
     <div class="row">
         <div class="col-md-12 col-sm-12">
@@ -224,6 +216,7 @@
                 </div>
             </div>
         </div>
+      </div>
     </div>
 </div>
 
