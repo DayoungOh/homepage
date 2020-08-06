@@ -23,9 +23,18 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="row" id="memberCount">
-          <div class="col-lg-7 col-md-6 col-sm-6">
+          <div class="col-lg-3 col-md-3 col-sm-6">
             <div class="card card-stats">
-                <iframe frameborder="0" src="http://52.78.186.240:8011/s/packus/app/kibana#/dashboard/ade1e940-d5fc-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-5y%2Fy,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:15,i:'063e9593-75ab-4bba-9ce1-6e888bd97113',w:24,x:0,y:0),id:'13f379a0-d568-11ea-83ec-578bbedbe7b6',panelIndex:'063e9593-75ab-4bba-9ce1-6e888bd97113',type:visualization,version:'7.8.0'),(embeddableConfig:(),gridData:(h:15,i:'59ceba00-d4e1-4eb7-9f5e-fd01b84eef0d',w:24,x:24,y:0),id:'67825050-d568-11ea-83ec-578bbedbe7b6',panelIndex:'59ceba00-d4e1-4eb7-9f5e-fd01b84eef0d',type:visualization,version:'7.8.0')),query:(language:kuery,query:''),timeRestore:!f,title:'%5B%EC%A0%84%EC%B2%B4%ED%9A%8C%EC%9B%90%5D%ED%9A%8C%EC%9B%90%20%EC%88%98',viewMode:edit)" height="300" width="100%" style="border-radius: .8rem;"></iframe>
+                <div class="card-body p-0 m-0" style="height: 300px;">
+                    <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/13f379a0-d568-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-5y%2Fy,to:now))&_a=(filters:!(),linked:!f,query:(language:kuery,query:''),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(customLabel:'%EC%B4%9D%20%ED%9A%8C%EC%9B%90%20%EC%88%98',field:n_memno),schema:metric,type:cardinality)),params:(addLegend:!f,addTooltip:!t,metric:(colorSchema:'Green%20to%20Red',colorsRange:!((from:0,to:10000)),invertColors:!f,labels:(show:!t),metricColorMode:None,percentageMode:!f,style:(bgColor:!f,bgFill:%23000,fontSize:32,labelColor:!f,subText:''),useRanges:!f),type:metric),title:'%5B%EC%A0%84%EC%B2%B4%5D%20%EC%B4%9D%20%ED%9A%8C%EC%9B%90%EC%88%98',type:metric))" height="100%" width="100%" frameborder="0" style="border-radius: .8rem;"></iframe>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body p-0 m-0" style="height: 300px;">
+                    <iframe src="http://52.78.186.240:8011/s/packus/app/kibana#/visualize/edit/67825050-d568-11ea-83ec-578bbedbe7b6?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-5y%2Fy,to:now))&_a=(filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:totalgoodsprice,negate:!f,params:(gte:1,lt:!n),type:range),range:(totalgoodsprice:(gte:1,lt:!n)))),linked:!f,query:(language:kuery,query:''),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(customLabel:'%EA%B5%AC%EB%A7%A4%EC%9D%B4%EB%A0%A5%20%E6%9C%89%20%ED%9A%8C%EC%9B%90',field:n_memno),schema:metric,type:cardinality)),params:(addLegend:!f,addTooltip:!t,metric:(colorSchema:'Green%20to%20Red',colorsRange:!((from:0,to:10000)),invertColors:!f,labels:(show:!t),metricColorMode:None,percentageMode:!f,style:(bgColor:!f,bgFill:%23000,fontSize:32,labelColor:!f,subText:''),useRanges:!f),type:metric),title:'%5B%EC%A0%84%EC%B2%B4%5D%20%EA%B5%AC%EB%A7%A4%EC%9D%B4%EB%A0%A5%20%E6%9C%89%20%ED%9A%8C%EC%9B%90',type:metric))" height="100%" width="100%" frameborder="0" style="border-radius: .8rem;"></iframe>
+                </div>
             </div>
           </div>
         </div>

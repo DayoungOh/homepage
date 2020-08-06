@@ -160,12 +160,117 @@ const Base = {
       success: function (resp) {
         // 받은 response를 이용해 작업
         console.log(resp)
+        var myChart1 = new Chart('myChart1', {
+          type: 'bar',
+          data: {
+              labels: ['모델1', '모델2', '모델3'],
+              datasets: [{
+                  label: '회원 수',
+                  backgroundColor: '#82ccdd',
+                  borderColor: '#82ccdd',
+                  data: [resp.chart1[0], resp.chart1[1], resp.chart1[2]]
+              }]
+          },
+          options: {
+              tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                        var value = tooltipItem.value;
+                        var unit = '명';
+                        return label + ': ' + value + unit;
+                    }
+                }
+            },
+            scales: {
+                yAxes: [{
+                  ticks: {
+                    baseAtZero: true
+                  }
+                }]
+            }
+          }
+        });
+
+        var myChart2 = new Chart('myChart2', {
+            type: 'horizontalBar',
+            data: {
+                labels: ['중국음식점', '일반한식', '치킨집'],
+                datasets: [{
+                    label: '전체회원 대비 비율',
+                    backgroundColor: '#82ccdd',
+                    borderColor: '#82ccdd',
+                    data: [resp.chart2[0], resp.chart2[1], resp.chart2[2]]
+                }]
+            },
+            options: {
+                  tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                            var value = tooltipItem.value;
+                            var unit = '%';
+                            return label + ': ' + value + unit;
+                        }
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                      ticks: {
+                        baseAtZero: true
+                      }
+                    }]
+                }
+             }
+        });
+
+        var chart3_label_array = new Array();
+        var chart3_data_array = new Array();
+
+        for(var i = 0; i < resp.chart3[0].recency.label.length; i++) {
+            chart3_label_array[i] = "" + resp.chart3[0].recency.label[i] + "";
+        }
+        for(var i = 0; i < resp.chart3[0].recency.data.length; i++) {
+            chart3_data_array[i] = resp.chart3[0].recency.data[i];
+        }
+        var chart3_label = chart3_label_array.toString();
+        var chart3_data = chart3_data_array.toString();
+
+        var myChart3 = new Chart('myChart3', {
+            type: 'bar',
+            data: {
+                labels: [resp.chart3[0].recency.label.toString()],
+                datasets: [{
+                    label: '회원 수',
+                    backgroundColor: '#6a89cc',
+                    borderColor: '#6a89cc',
+                    data: [resp.chart3[0].recency.data.toString()]
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                      ticks: {
+                        baseAtZero: true
+                      }
+                    }]
+                }
+            }
+        });
       },
       error: function () {
         alert("세그먼트 데이터를 가져오지 못했습니다.");
       },
     });
-  }
+  },
+
+
+
 };
 
+
 Base.init();
+
+
+
+
