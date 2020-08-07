@@ -4,6 +4,9 @@ import "../css/base.scss";
 const DashboardChart = function () {
   const chartOptions = {
     segBarChartOption1: {
+      legend: {
+        display: false
+      },
       tooltips: {
         callbacks: {
           label: function (tooltipItem, data) {
@@ -52,7 +55,6 @@ const DashboardChart = function () {
       chart.loadChart(data);
     },
     loadChart: function (data) {
-      console.log("chart");
       const selectedSeg0 = $("#segmentSelect0 option:selected").text();
       const selectedSeg1 = $("#segmentSelect1 option:selected").text();
       const selectedSeg2 = $("#segmentSelect2 option:selected").text();
@@ -69,7 +71,12 @@ const DashboardChart = function () {
             },
           ],
         },
-        options: chartOptions.segBarChartOption1,
+        options: {
+          ...chartOptions.segBarChartOption1,
+          legend: {
+            display: true
+          }
+        },
       });
 
       let myChart2 = new Chart("myChart2", {
@@ -174,7 +181,7 @@ const DashboardChart = function () {
           labels: data.chart3[1].monetary.label,
           datasets: [
             {
-              label: "회원 수",
+              // label: "회원 수",
               backgroundColor: "#6a89cc",
               borderColor: "#6a89cc",
               data: data.chart3[1].monetary.data,
@@ -190,7 +197,7 @@ const DashboardChart = function () {
           labels: data.chart3[2].recency.label,
           datasets: [
             {
-              label: "회원 수",
+              // label: "회원 수",
               backgroundColor: "#6a89cc",
               borderColor: "#6a89cc",
               data: data.chart3[2].recency.data,
