@@ -65,7 +65,7 @@ const DashboardChart = function () {
           datasets: [
             {
               label: "회원 수",
-              backgroundColor: "#82ccdd",
+              backgroundColor: ["#92CAEF","#FFE7A7","#F8ABA8"],
               borderColor: "#82ccdd",
               data: [data.chart1[0], data.chart1[1], data.chart1[2]],
             },
@@ -86,7 +86,7 @@ const DashboardChart = function () {
           datasets: [
             {
               label: "전체회원 대비 비율",
-              backgroundColor: "#82ccdd",
+              backgroundColor: ["#92CAEF","#FFE7A7","#F8ABA8"],
               borderColor: "#82ccdd",
               data: [data.chart2[0], data.chart2[1], data.chart2[2]],
             },
@@ -102,8 +102,8 @@ const DashboardChart = function () {
           datasets: [
             {
               label: "회원 수",
-              backgroundColor: "#6a89cc",
-              borderColor: "#6a89cc",
+              backgroundColor: "#92CAEF",
+              borderColor: "#92CAEF",
               data: data.chart3[0].recency.data,
             },
           ],
@@ -118,8 +118,8 @@ const DashboardChart = function () {
           datasets: [
             {
               label: "회원 수",
-              backgroundColor: "#6a89cc",
-              borderColor: "#6a89cc",
+              backgroundColor: "#92CAEF",
+              borderColor: "#92CAEF",
               data: data.chart3[0].frequency.data,
             },
           ],
@@ -134,8 +134,8 @@ const DashboardChart = function () {
           datasets: [
             {
               label: "회원 수",
-              backgroundColor: "#6a89cc",
-              borderColor: "#6a89cc",
+              backgroundColor: "#92CAEF",
+              borderColor: "#92CAEF",
               data: data.chart3[0].monetary.data,
             },
           ],
@@ -150,8 +150,8 @@ const DashboardChart = function () {
           datasets: [
             {
               label: "회원 수",
-              backgroundColor: "#6a89cc",
-              borderColor: "#6a89cc",
+              backgroundColor: "#FFE7A7",
+              borderColor: "#FFE7A7",
               data: data.chart3[1].recency.data,
             },
           ],
@@ -166,8 +166,8 @@ const DashboardChart = function () {
           datasets: [
             {
               label: "회원 수",
-              backgroundColor: "#6a89cc",
-              borderColor: "#6a89cc",
+              backgroundColor: "#FFE7A7",
+              borderColor: "#FFE7A7",
               data: data.chart3[1].frequency.data,
             },
           ],
@@ -182,8 +182,8 @@ const DashboardChart = function () {
           datasets: [
             {
               // label: "회원 수",
-              backgroundColor: "#6a89cc",
-              borderColor: "#6a89cc",
+              backgroundColor: "#FFE7A7",
+              borderColor: "#FFE7A7",
               data: data.chart3[1].monetary.data,
             },
           ],
@@ -198,8 +198,8 @@ const DashboardChart = function () {
           datasets: [
             {
               // label: "회원 수",
-              backgroundColor: "#6a89cc",
-              borderColor: "#6a89cc",
+              backgroundColor: "#F8ABA8",
+              borderColor: "#F8ABA8",
               data: data.chart3[2].recency.data,
             },
           ],
@@ -224,8 +224,8 @@ const DashboardChart = function () {
           datasets: [
             {
               label: "회원 수",
-              backgroundColor: "#6a89cc",
-              borderColor: "#6a89cc",
+              backgroundColor: "#F8ABA8",
+              borderColor: "#F8ABA8",
               data: data.chart3[2].frequency.data,
             },
           ],
@@ -240,8 +240,8 @@ const DashboardChart = function () {
           datasets: [
             {
               label: "회원 수",
-              backgroundColor: "#6a89cc",
-              borderColor: "#6a89cc",
+              backgroundColor: "#F8ABA8",
+              borderColor: "#F8ABA8",
               data: data.chart3[2].monetary.data,
             },
           ],
