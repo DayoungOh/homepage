@@ -25,6 +25,7 @@ const Base = {
     $('#surf-btn').on('click', function() {
       Base.loadSegDashboardData();
     });
+    Base.segReportDateInit();
   },
 
   segInfo: {
@@ -32,7 +33,6 @@ const Base = {
     upjong: "",
     sales: "",
   },
-  segList: [],
 
   initCheckbox: function () {
     // $("input[type=checkbox]").prop("checked", false)
@@ -66,7 +66,6 @@ const Base = {
           Base.addSegListTag(resp[i].id, resp[i].data);
           Base.selectBoxItemInit(resp[i].data, i);
         }
-        Base.segList = resp
       },
     });
   },
@@ -79,7 +78,6 @@ const Base = {
     $('select#segmentSelect2').append($('<option value="'+segInfoStr+'" '
       + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'</option>'))
   },
-
   loadUpjongList: function () {
     $.ajax({
       type: "get",
@@ -163,8 +161,14 @@ const Base = {
       },
     });
   },
-  loadSegDashboardData: function () {
 
+  segReportDateInit: function() {
+    const today = new Date();
+    const [year, month, day] = today.toISOString().slice(0, 10).split('-')
+    $('#termSelectFrom').val((year -1) + "-" + month +"-"+ day)
+    $('#termSelectTo').val(year + "-" + month +"-"+ day)
+  },
+  loadSegDashboardData: function () {
     if ( $('#termSelectFrom')[0].value === "" || $('#termSelectTo')[0].value === "") {
       alert('분석기간을 입력해주세요!')
     } else {
@@ -221,9 +225,6 @@ const Base = {
       });
     }
   },
-
-
-
 };
 
 
