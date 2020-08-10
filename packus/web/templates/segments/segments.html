@@ -1,89 +1,89 @@
 <!--세그먼트 생성 화면-->
-    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent" id="pills-segments" role="tabpanel" aria-labeleledby="pills-segments">
-      <div class="container-fluid">
-        <div class="navbar-wrapper">
-          <div class="navbar-toggle">
-            <button type="button" class="navbar-toggler">
-              <span class="navbar-toggler-bar bar1"></span>
-              <span class="navbar-toggler-bar bar2"></span>
-              <span class="navbar-toggler-bar bar3"></span>
-            </button>
-          </div>
-          <a class="navbar-brand" href="javascript:;">회원 세그먼트</a>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent" id="pills-segments" role="tabpanel" aria-labeleledby="pills-segments">
+  <div class="container-fluid">
+    <div class="navbar-wrapper">
+      <div class="navbar-toggle">
+        <button type="button" class="navbar-toggler">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </button>
       </div>
-    </nav>
-    <!-- End Navbar -->
-    <div class="content">
-        <div class="row">
-            <div class="col-md-5 col-sm-5">
-                <div class="card">
-                    <div class="card-header border-bottom pt-3 pb-2 pl-3">
-                    <h5 class="card-title m-0">세그먼트 생성</h5>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group row mb-4">
-                                <div class="col-sm-2 text-center my-auto">모델명</div>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="seg-name" aria-describedby="segmentNm">
-                                    <small id="segmentNm" class="form-text text-muted">저장할 세그먼트 모델명을 입력하세요.</small>
-                                </div>
+      <a class="navbar-brand" href="javascript:;">회원 세그먼트</a>
+    </div>
+  </div>
+</nav>
+<!-- End Navbar -->
+<div class="content">
+    <div class="row">
+        <div class="col-md-5 col-sm-5">
+            <div class="card">
+                <div class="card-header border-bottom pt-3 pb-2 pl-3">
+                <h5 class="card-title m-0">세그먼트 생성</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group row mb-4">
+                            <div class="col-sm-2 text-center my-auto">모델명</div>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="seg-name" aria-describedby="segmentNm">
+                                <small id="segmentNm" class="form-text text-muted">저장할 세그먼트 모델명을 입력하세요.</small>
                             </div>
-                            <div class="form-group row mb-4">
-                                <div class="col-sm-2 text-center my-auto">업종</div>
-                                <div class="col-sm-10" id="segUpjong">
-                                    <div class="card" style="box-shadow: none; border: 1px solid #dddddd;">
-                                        <div class="card-body">
-                                            <div class="row ml-2" id="upjong-list"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row mb-4">
-                                <div class="col-sm-2 text-center my-auto">구매액</div>
-                                <div class="col-sm-10">
-                                    <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck1" name="sales" value="5만원 미만">
-                                        <label class="form-check-label" for="priceCheck1">5만원 미만</label>
-                                    </div>
-                                    <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck2" name="sales" value="5만원 - 15만원">
-                                        <label class="form-check-label" for="priceCheck2">5만원 - 15만원</label>
-                                    </div>
-                                    <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck3" name="sales" value="15 - 30만원">
-                                        <label class="form-check-label" for="priceCheck3">15 - 30만원</label>
-                                    </div>
-                                    <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck4" name="sales" value="30 - 50만원">
-                                        <label class="form-check-label" for="priceCheck4">30 - 50만원</label>
-                                    </div>
-                                    <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck5" name="sales" value="50 - 100만원">
-                                        <label class="form-check-label" for="priceCheck5">50 - 100만원</label>
-                                    </div>
-                                    <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="priceCheck6" name="sales" value="100만원 이상">
-                                        <label class="form-check-label" for="priceCheck6">100만원 이상</label>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <div class="col-sm-2 text-center my-auto">업종</div>
+                            <div class="col-sm-10" id="segUpjong">
+                                <div class="card" style="box-shadow: none; border: 1px solid #dddddd;">
+                                    <div class="card-body">
+                                        <div class="row ml-2" id="upjong-list"></div>
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary float-right saveSeg" id='seg-save-bnt'>저장</button>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <div class="col-sm-2 text-center my-auto">구매액</div>
+                            <div class="col-sm-10">
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="priceCheck1" name="sales" value="5만원 미만">
+                                    <label class="form-check-label" for="priceCheck1">5만원 미만</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="priceCheck2" name="sales" value="5만원 - 15만원">
+                                    <label class="form-check-label" for="priceCheck2">5만원 - 15만원</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="priceCheck3" name="sales" value="15 - 30만원">
+                                    <label class="form-check-label" for="priceCheck3">15 - 30만원</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="priceCheck4" name="sales" value="30 - 50만원">
+                                    <label class="form-check-label" for="priceCheck4">30 - 50만원</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="priceCheck5" name="sales" value="50 - 100만원">
+                                    <label class="form-check-label" for="priceCheck5">50 - 100만원</label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="priceCheck6" name="sales" value="100만원 이상">
+                                    <label class="form-check-label" for="priceCheck6">100만원 이상</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary float-right saveSeg" id='seg-save-bnt'>저장</button>
+                    </form>
                 </div>
             </div>
-            <div class="col-md-7 col-sm-7" id="segList">
-                <div class="card">
-                    <div class="card-header border-bottom pt-3 pb-2 pl-3">
-                    <h5 class="card-title m-0">세그먼트 리스트</h5>
-                    </div>
-                    <div class="card-body" style="height: 745px; overflow: auto;">
-                        <div class="list-group" id="segments-list">
-                        </div>
+        </div>
+        <div class="col-md-7 col-sm-7" id="segList">
+            <div class="card">
+                <div class="card-header border-bottom pt-3 pb-2 pl-3">
+                <h5 class="card-title m-0">세그먼트 리스트</h5>
+                </div>
+                <div class="card-body" style="height: 745px; overflow: auto;">
+                    <div class="list-group" id="segments-list">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
