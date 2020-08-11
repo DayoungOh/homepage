@@ -34,3 +34,25 @@ def dashboard():
 def model():
     menu = 'model'
     return render_template('index.html', menu=menu)
+
+@app.route('/okpos')
+@app.route('/okpos/upjong')
+def upjong():
+    menu = 'upjong'
+    return render_template('index.html', menu=menu)
+
+@app.route('/okpos/area')
+def area():
+    menu = 'area'
+    return render_template('index.html', menu=menu)
+
+@app.route('/okpos/total')
+def total():
+    menu = 'total'
+    return render_template('index.html', menu=menu)    
+
+
+@app.route('/okpos/goal')
+def goal():
+    menu = 'goal'
+    return render_template('index.html', menu=menu)    
