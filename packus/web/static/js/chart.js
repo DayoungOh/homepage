@@ -51,8 +51,23 @@ const DashboardChart = function () {
   };
   const chart = {
     init: function (data) {
-      console.log("차트시작");
+      console.log("Chart Init");
       chart.loadChart(data);
+    },
+    updateChart: function(data) {
+      console.log('Chart Data Update')
+      chart.myChart1.destroy();
+      chart.myChart2.destroy();
+      chart.myChart3.destroy();
+      chart.myChart4.destroy();
+      chart.myChart5.destroy();
+      chart.myChart6.destroy();
+      chart.myChart7.destroy();
+      chart.myChart8.destroy();
+      chart.myChart9.destroy();
+      chart.myChart10.destroy();
+      chart.myChart11.destroy();
+      chart.loadChart(data)
     },
     loadChart: function (data) {
       const selectedSeg0 = $("#segmentSelect0 option:selected").text();
@@ -94,6 +109,7 @@ const DashboardChart = function () {
         },
         options: chartOptions.segBarChartOption2,
       });
+      chart.myChart2 = myChart2
 
       let myChart3 = new Chart("myChart3", {
         type: "bar",
@@ -248,6 +264,18 @@ const DashboardChart = function () {
         },
         options: chartOptions.segBarChartOption1,
       });
+
+      chart.myChart1 = myChart1
+      chart.myChart2 = myChart2
+      chart.myChart3 = myChart3
+      chart.myChart4 = myChart4
+      chart.myChart5 = myChart5
+      chart.myChart6 = myChart6
+      chart.myChart7 = myChart7
+      chart.myChart8 = myChart8
+      chart.myChart9 = myChart9
+      chart.myChart10 = myChart10
+      chart.myChart11 = myChart11
     },
   };
   return chart;

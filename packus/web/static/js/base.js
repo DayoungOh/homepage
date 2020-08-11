@@ -97,7 +97,8 @@ const Base = {
 
   createSeg: function () {
     Base.segInfo.model_nm = $("#seg-name").val();
-    if (Base.segInfovalidator(Base.segInfo)) {
+    const flag = Base.segInfovalidator(Base.segInfo)
+    if (flag === "OK") {
       $.ajax({
         type: "post",
         url: "/api/segments/put",
@@ -118,16 +119,21 @@ const Base = {
         },
       });
     } else {
-      alert("세그먼트 정보를 모두 입력해주십시오.");
+      alert(flag);
     }
   },
   segInfovalidator: function (segInfo) {
     for (let i = 0; i < Object.values(segInfo).length; i++) {
       if (Object.values(segInfo)[i].length === 0) {
-        return false;
+        let msg = "세그먼트 정보를 모두 입력해주십시오."
+        return msg;
+      }
+      if (segInfo.model_nm.indexOf('|') !== -1) {
+        let msg = '모델명에 특수문자" | "를 포함할 수 없습니다.'
+        return msg;
       }
     }
-    return true;
+    return "OK";
   },
 
   addSegListTag: function (segId, segInfo) {
@@ -193,7 +199,6 @@ const Base = {
         success: function (resp) {
   
           // 테이블 데이터 입력
-  
           const tr0 = '<th scope="row">'+ selectedSeg0[0] + '</th>'
                   + '<td> ' + resp.table[0].mem_count + '명</td>'
                   + '<td>평균 ' + resp.table[0].recency + '일 전 구매</td>'
@@ -213,11 +218,13 @@ const Base = {
           $('#rfm-tb').find('tbody tr:nth-child(1)').html(tr0);
           $('#rfm-tb').find('tbody tr:nth-child(2)').html(tr1);
           $('#rfm-tb').find('tbody tr:nth-child(3)').html(tr2);
-  
-          dashboardChart.init(resp);
-          
+
+          if($('#chartContainer').hasClass('d-none')) {
+            dashboardChart.init(resp);
+          } else {
+            dashboardChart.updateChart(resp);
+          }
           $('#chartContainer').removeClass('d-none')
-  
         },
         error: function () {
           alert("세그먼트 데이터를 가져오지 못했습니다.");
