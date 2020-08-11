@@ -57,11 +57,62 @@
                 </li>
             </ul>
           </li>
+          <li
+              {% if menu == 'okpos' %}
+                class="active"
+              {% endif %}
+            >
+            <a href="/okpos/total" id="pills-segments">
+              <i class="nc-icon nc-diamond"></i>
+              <p>OKPOS Event</p>
+            </a>
+            <ul class="sub-menu mt-0">
+                <li class="sub-sidebar-brand"
+                    {% if menu == 'total' %}
+                        class="active"
+                      {% endif %}
+                    >
+                    <a href="/okpos/total" class="p-0 mt-0">―   클릭 Event<span class="sub_icon fa fa-hdd-o"></span></a>
+                    <ul class="sub-menu mt-0">
+                      <li class="sub-sidebar-brand"
+                          {% if menu == 'total' %}
+                              class="active"
+                            {% endif %}
+                          >
+                          <a href="/okpos/total" class="p-0 mt-0">―   Total 보고서<span class="sub_icon fa fa-hdd-o"></span></a>
+                      </li>
+                      <li class="sub-sidebar-brand"
+                          {% if menu == 'upjong' %}
+                              class="active"
+                            {% endif %}
+                          >
+                          <a href="/okpos/upjong" class="p-0 mt-0">―   업종별 보고서<span class="sub_icon fa fa-hdd-o"></span></a>
+                      </li>
+                      <li class="sub-sidebar-brand"
+                          {% if menu == 'area' %}
+                              class="active"
+                            {% endif %}
+                          >
+                          <a href="/okpos/area" class="p-0 mt-0">―   지역별 보고서<span class="sub_icon fa fa-hdd-o"></span></a>
+                      </li>
+                  </ul>
+                </li>
+            </ul>
+            <ul class="sub-menu" style="margin-top: 100px;">
+                <li class="sub-sidebar-brand"
+                    {% if menu == 'goal' %}
+                        class="active"
+                      {% endif %}
+                    >
+                    <a href="/okpos/goal" class="p-0 mt-0">―   목표달성 보고서<span class="sub_icon fa fa-hdd-o"></span></a>
+                </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
 
-    <div class="main-panel">
+    <div class="main-panel" style="height: 100%;">
       {% if menu == 'segments' %}
         {% include "segments/segments.html" %}
       {% elif menu == 'seg_reports' %}
@@ -70,6 +121,14 @@
         {% include "dashboard.html" %}
       {% elif menu == 'model' %}
         {% include "model.html" %}
+      {% elif menu == 'total' %}
+        {% include "okpos/total.html" %}
+      {% elif menu == 'upjong' %}
+        {% include "okpos/upjong.html" %}
+      {% elif menu == 'area' %}
+        {% include "okpos/area.html" %}        
+      {% elif menu == 'goal' %}
+        {% include "okpos/goal.html" %}
       {% endif %}
     </div>
 
