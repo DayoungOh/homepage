@@ -30,9 +30,15 @@ def dashboard():
     return render_template('index.html', menu=menu)
 
 
-@app.route('/model')
+@app.route('/rfm')
+@app.route('/rfm/model')
 def model():
     menu = 'model'
+    return render_template('index.html', menu=menu)
+
+@app.route('/rfm/cluster')
+def cluster():
+    menu = 'cluster'
     return render_template('index.html', menu=menu)
 
 @app.route('/okpos')

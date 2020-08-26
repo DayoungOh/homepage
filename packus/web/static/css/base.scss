@@ -2888,11 +2888,19 @@ License - nucleoapp.com/license/
     padding-bottom: 0; }
 
 .table > thead > tr > th {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   padding-bottom: 0;
   text-transform: uppercase;
   border: 0; }
+
+.table > tbody > tr > th {
+  font-size: 12px;
+}
+
+.table > tbody > tr > td {
+  font-size: 12px;
+}
 
 .table .radio,
 .table .checkbox {
@@ -4249,6 +4257,52 @@ License - nucleoapp.com/license/
 .countCardBody {
   height: 207px;
   margin-top: -40px!important;
+}
+.bd-callout {
+  padding: .7rem 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #eee;
+  border-left-width: .25rem;
+  border-radius: .25rem;
+  background-color: #fff;
+}
+.bd-callout-top {
+  padding: .5rem 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #eee;
+  border-top-width: .25rem;
+  border-radius: .25rem;
+}
+.bd-callout-warning {
+  border-left-color: #f0ad4e;
+}
+.bd-callout-info {
+  border-left-color: #5bc0de;
+}
+.bd-callout-top-warning {
+  border-top-color: #f0ad4e;
+}
+.bd-callout-top-info {
+  border-top-color: #5bc0de;
+}
+.card ul li {
+  font-size: .75rem;
+}
+.round-cnt {
+  height: 120px; 
+  border-radius: 4rem;
+  display: table;
+}
+.round-cnt .content {
+  display: table-cell; 
+  vertical-align: middle;
+}
+.gather-box {
+  height: 300px; 
+  display: table-cell; 
+  vertical-align: middle;
 }
 
 
