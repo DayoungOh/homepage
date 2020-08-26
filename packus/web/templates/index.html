@@ -15,7 +15,7 @@
               {% endif %}
             >
             <a href="/dashboard" id="pills-dashboard">
-              <i class="nc-icon nc-tile-56"></i>
+              <i class="nc-icon nc-layout-11"></i>
               <p>전체 회원</p>
             </a>
           </li>
@@ -24,10 +24,28 @@
                 class="active"
               {% endif %}
             >
-            <a href="/model" id="pills-rfm">
-              <i class="nc-icon nc-bank"></i>
-              <p>RFM 모델</p>
+            <a href="/rfm/model" id="pills-rfm">
+              <i class="nc-icon nc-chart-pie-36"></i>
+              <p>패커스 RFM 모델</p>
             </a>
+            <ul class="sub-menu mt-0">
+              <li class="sub-sidebar-brand"
+                  {% if menu == 'model' %}
+                      class="active"
+                    {% endif %}
+                  >
+                  <a href="/rfm/model" class="p-0 mt-0">―   RFM 모델 보고서<span class="sub_icon fa fa-hdd-o"></span></a>
+                </li>
+            </ul>
+            <ul class="sub-menu mt-0">
+              <li class="sub-sidebar-brand"
+                  {% if menu == 'cluster' %}
+                      class="active"
+                    {% endif %}
+                  >
+                  <a href="/rfm/cluster" class="p-0 mt-0">―   클러스터 보고서<span class="sub_icon fa fa-hdd-o"></span></a>
+                </li>
+            </ul>
           </li>
           <li
               {% if menu == 'segments' %}
@@ -35,7 +53,7 @@
               {% endif %}
             >
             <a href="/segments/segments" id="pills-segments">
-              <i class="nc-icon nc-diamond"></i>
+              <i class="nc-icon nc-bulb-63"></i>
               <p>세그먼트</p>
             </a>
             <ul class="sub-menu mt-0">
@@ -63,7 +81,7 @@
               {% endif %}
             >
             <a href="/okpos/total" id="pills-segments">
-              <i class="nc-icon nc-diamond"></i>
+              <i class="nc-icon nc-spaceship"></i>
               <p>OKPOS Event</p>
             </a>
             <ul class="sub-menu mt-0">
@@ -112,7 +130,7 @@
       </div>
     </div>
 
-    <div class="main-panel" style="height: 100%;">
+    <div class="main-panel">
       {% if menu == 'segments' %}
         {% include "segments/segments.html" %}
       {% elif menu == 'seg_reports' %}
@@ -120,7 +138,9 @@
       {% elif menu == 'dashboard' %}
         {% include "dashboard.html" %}
       {% elif menu == 'model' %}
-        {% include "model.html" %}
+        {% include "rfm/model.html" %}
+      {% elif menu == 'cluster' %}
+        {% include "rfm/cluster.html" %}
       {% elif menu == 'total' %}
         {% include "okpos/total.html" %}
       {% elif menu == 'upjong' %}
