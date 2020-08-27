@@ -4231,7 +4231,7 @@ License - nucleoapp.com/license/
     overflow: auto;
 }
 #segUpjong .card .card-body {
-    height: 420px!important;
+    height: 380px!important;
     overflow: auto;
     display: inline-block;
 }
@@ -4303,6 +4303,9 @@ License - nucleoapp.com/license/
   height: 300px; 
   display: table-cell; 
   vertical-align: middle;
+}
+.card-body .form-group p {
+  font-size: 12px;
 }
 
 
