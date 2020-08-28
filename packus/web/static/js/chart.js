@@ -49,10 +49,12 @@ const DashboardChart = function () {
       },
     },
   };
+
   const chart = {
     init: function (data) {
       console.log("Chart Init");
       chart.loadChart(data);
+      chart.loadChartCluster(data);
     },
     updateChart: function(data) {
       console.log('Chart Data Update')
@@ -109,7 +111,6 @@ const DashboardChart = function () {
         },
         options: chartOptions.segBarChartOption2,
       });
-      chart.myChart2 = myChart2
 
       let myChart3 = new Chart("myChart3", {
         type: "bar",
@@ -276,6 +277,26 @@ const DashboardChart = function () {
       chart.myChart9 = myChart9
       chart.myChart10 = myChart10
       chart.myChart11 = myChart11
+    },
+    loadChartCluster: function (data) {
+      let myChart_cluster1 = new Chart("myChart_cluster1", {
+        type: "horizontalBar",
+        data: {
+          labels: ["경남 창원", "경기 수원시", "서울 강남구"],
+          datasets: [
+            {
+              label: "분포율",
+              backgroundColor: ["#92CAEF"],
+              borderColor: "#82ccdd",
+              data: [120, 95, 92],
+            },
+          ],
+        },
+        options: chartOptions.segBarChartOption2,
+      });
+
+      chart.myChart_cluster1 = myChart_cluster1
+
     },
   };
   return chart;

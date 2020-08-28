@@ -20,7 +20,7 @@ const Base = {
     Base.loadUpjongList();
     Base.loadSegList();
     Base.initCheckbox();
-    DashboardChart.loadChartCluster();
+    dashboardChart.loadChartCluster();
     
     // 조회버튼 클릭
     $('#surf-btn').on('click', function() {
