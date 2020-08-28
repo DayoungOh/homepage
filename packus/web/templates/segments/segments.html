@@ -24,14 +24,14 @@
                 <div class="card-body">
                     <form>
                         <div class="form-group row mb-4">
-                            <div class="col-sm-2 text-center my-auto">모델명</div>
+                            <div class="col-sm-2 text-center my-auto"><p>모델명</p></div>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="seg-name" aria-describedby="segmentNm">
                                 <small id="segmentNm" class="form-text text-muted">저장할 세그먼트 모델명을 입력하세요.</small>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <div class="col-sm-2 text-center my-auto">업종</div>
+                            <div class="col-sm-2 text-center my-auto"><p>업종</p></div>
                             <div class="col-sm-10" id="segUpjong">
                                 <div class="card" style="box-shadow: none; border: 1px solid #dddddd;">
                                     <div class="card-body">
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <div class="col-sm-2 text-center my-auto">구매액</div>
+                            <div class="col-sm-2 text-center my-auto"><p>구매액</p></div>
                             <div class="col-sm-10">
                                 <div class="form-check-inline">
                                     <input class="form-check-input" type="checkbox" id="priceCheck1" name="sales" value="5만원 미만">
@@ -69,7 +69,18 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary float-right saveSeg" id='seg-save-bnt'>저장</button>
+                        <div class="form-group row mb-0">
+                            <div class="col-sm-2 text-center my-auto"><p>분석기간</p></div>
+                            <div class="col-sm-10">
+                                <div class="form-group">
+                                    <input type="date" class="form-control p-2" name="period" id="periodFrom" style="font-size: 12px!important;">
+                                </div>
+                                <div class="form-group">
+                                    <input type="date" class="form-control p-2" name="period" id="periodTo" style="font-size: 12px!important;">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary float-right saveSeg my-1" id='seg-save-bnt'>저장</button>
                     </form>
                 </div>
             </div>
