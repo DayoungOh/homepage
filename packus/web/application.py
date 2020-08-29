@@ -4,8 +4,10 @@ import os
 from flask import *
 from elasticsearch import Elasticsearch
 from packus.web.config import get_es_conn
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 cur_dir = os.path.dirname(__file__)
 

@@ -279,23 +279,26 @@ const DashboardChart = function () {
       chart.myChart11 = myChart11
     },
     loadChartCluster: function (data) {
+      var clusterChart1 = document.getElementById("myChart_cluster1");
+      //clusterChart1.height = 350;
       let myChart_cluster1 = new Chart("myChart_cluster1", {
         type: "horizontalBar",
         data: {
-          labels: ["경남 창원", "경기 수원시", "서울 강남구"],
+          labels: ["경남 창원", "경기 수원", "서울 강남", "충북 청주", "경기 고양", "경남 진주", "경기 화성", "경남 양산", "경북 경산", "경기 성남", "경기 남양주", "전북 전주", "서울 마포", "경기 평택", "경기 안산"],
           datasets: [
             {
-              label: "분포율",
-              backgroundColor: ["#92CAEF"],
+              label: "분포 인구",
+              backgroundColor: "#92CAEF",
               borderColor: "#82ccdd",
-              data: [120, 95, 92],
+              data: [118, 93, 78, 77, 77, 71, 67, 63, 62, 58, 57, 56, 52, 52, 51],
             },
           ],
         },
-        options: chartOptions.segBarChartOption2,
+        options: chartOptions.segBarChartOption1,
       });
 
       chart.myChart_cluster1 = myChart_cluster1
+      chart.myChart_cluster1.height = '350px';
 
     },
   };

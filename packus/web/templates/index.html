@@ -37,7 +37,7 @@
                   <a href="/rfm/model" class="p-0 mt-0">―   RFM 모델 보고서<span class="sub_icon fa fa-hdd-o"></span></a>
                 </li>
             </ul>
-            <!-- <ul class="sub-menu mt-0">
+            <ul class="sub-menu mt-0">
               <li class="sub-sidebar-brand"
                   {% if menu == 'cluster' %}
                       class="active"
@@ -45,7 +45,7 @@
                   >
                   <a href="/rfm/cluster" class="p-0 mt-0">―   클러스터 보고서<span class="sub_icon fa fa-hdd-o"></span></a>
                 </li>
-            </ul> -->
+            </ul>
           </li>
           <li
               {% if menu == 'segments' %}
@@ -146,7 +146,7 @@
       {% elif menu == 'upjong' %}
         {% include "okpos/upjong.html" %}
       {% elif menu == 'area' %}
-        {% include "okpos/area.html" %}        
+        {% include "okpos/area.html" %}     
       {% elif menu == 'goal' %}
         {% include "okpos/goal.html" %}
       {% endif %}
