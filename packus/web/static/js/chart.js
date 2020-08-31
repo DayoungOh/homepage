@@ -49,10 +49,12 @@ const DashboardChart = function () {
       },
     },
   };
+
   const chart = {
     init: function (data) {
       console.log("Chart Init");
       chart.loadChart(data);
+      chart.loadChartCluster(data);
     },
     updateChart: function(data) {
       console.log('Chart Data Update')
@@ -70,9 +72,9 @@ const DashboardChart = function () {
       chart.loadChart(data)
     },
     loadChart: function (data) {
-      const selectedSeg0 = $("#segmentSelect0 option:selected").text();
-      const selectedSeg1 = $("#segmentSelect1 option:selected").text();
-      const selectedSeg2 = $("#segmentSelect2 option:selected").text();
+      const selectedSeg0 = $("#segmentSelect0 option:selected").text().split("(")[0];
+      const selectedSeg1 = $("#segmentSelect1 option:selected").text().split("(")[0];
+      const selectedSeg2 = $("#segmentSelect2 option:selected").text().split("(")[0];
       let myChart1 = new Chart("myChart1", {
         type: "bar",
         data: {
@@ -89,7 +91,7 @@ const DashboardChart = function () {
         options: {
           ...chartOptions.segBarChartOption1,
           legend: {
-            display: true
+            display: false
           }
         },
       });
@@ -107,9 +109,13 @@ const DashboardChart = function () {
             },
           ],
         },
-        options: chartOptions.segBarChartOption2,
+        options: {
+          ...chartOptions.segBarChartOption2,
+          legend: {
+            display: false
+          }
+        },
       });
-      chart.myChart2 = myChart2
 
       let myChart3 = new Chart("myChart3", {
         type: "bar",
@@ -220,17 +226,7 @@ const DashboardChart = function () {
             },
           ],
         },
-        options: {
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  baseAtZero: true,
-                },
-              },
-            ],
-          },
-        },
+        options: chartOptions.segBarChartOption1,
       });
 
       let myChart10 = new Chart("myChart10", {
@@ -276,6 +272,28 @@ const DashboardChart = function () {
       chart.myChart9 = myChart9
       chart.myChart10 = myChart10
       chart.myChart11 = myChart11
+    },
+    loadChartCluster: function (data) {
+      let myChart_cluster1 = new Chart("myChart_cluster1", {
+        type: "horizontalBar",
+        data: {
+          labels: ["경남 창원", "경기 수원", "서울 강남", "충북 청주", "경기 고양", "경남 진주", "경기 화성", "경남 양산", "경북 경산", "경기 성남", "경기 남양주", "전북 전주", "서울 마포", "경기 평택", "경기 안산"],
+          datasets: [
+            {
+              label: "분포 인구",
+              backgroundColor: "#92CAEF",
+              borderColor: "#82ccdd",
+              data: [118, 93, 78, 77, 77, 71, 67, 63, 62, 58, 57, 56, 52, 52, 51],
+            },
+          ],
+        },
+        options: {
+          ...chartOptions.segBarChartOption1,
+          maintainAspectRatio: false,
+        },
+      });
+
+      chart.myChart_cluster1 = myChart_cluster1
     },
   };
   return chart;

@@ -3,6 +3,7 @@ import "../css/base.scss";
 import DashboardChart from "./chart"
 
 const dashboardChart = DashboardChart();
+let dashboard;
 
 const Base = {
   init: function () {
@@ -20,7 +21,7 @@ const Base = {
     Base.loadUpjongList();
     Base.loadSegList();
     Base.initCheckbox();
-    DashboardChart.loadChartCluster();
+    dashboardChart.loadChartCluster();
     
     // 조회버튼 클릭
     $('#surf-btn').on('click', function() {
@@ -33,7 +34,8 @@ const Base = {
     model_nm: "",
     upjong: "",
     sales: "",
-    period: "",
+    datefrom: "",
+    dateto: "",
   },
 
   initCheckbox: function () {
@@ -72,13 +74,13 @@ const Base = {
     });
   },
   selectBoxItemInit: function(segInfo, idx) {
-    const segInfoStr = segInfo.model_nm + "|" + segInfo.upjong + "|" + segInfo.sales + "|" + segInfo.period 
+    const segInfoStr = segInfo.model_nm + "|" + segInfo.upjong + "|" + segInfo.sales + "|" + segInfo.datefrom + "~" + segInfo.dateto
     $('select#segmentSelect0').append($('<option value="'+segInfoStr+'" '
-      + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.sales+', 기간:'+segInfo.period+')</option>'))
+      + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.sales+', 기간:'+segInfo.datefrom+'~'+segInfo.dateto+')</option>'))
     $('select#segmentSelect1').append($('<option value="'+segInfoStr+'" '
-      + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.sales+', 기간:'+segInfo.period+')</option>'))
+      + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.sales+', 기간:'+segInfo.datefrom+'~'+segInfo.dateto+')</option>'))
     $('select#segmentSelect2').append($('<option value="'+segInfoStr+'" '
-      + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.sales+', 기간:'+segInfo.period+')</option>'))
+      + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.sales+', 기간:'+segInfo.datefrom+'~'+segInfo.dateto+')</option>'))
   },
   loadUpjongList: function () {
     $.ajax({
@@ -99,6 +101,8 @@ const Base = {
 
   createSeg: function () {
     Base.segInfo.model_nm = $("#seg-name").val();
+    Base.segInfo.datefrom = $('#periodFrom')[0].value;
+    Base.segInfo.dateto = $('#periodTo')[0].value;
     const flag = Base.segInfovalidator(Base.segInfo)
     if (flag === "OK") {
       $.ajax({
@@ -113,7 +117,8 @@ const Base = {
             model_nm: "",
             upjong: "",
             sales: "",
-            period: "",
+            datefrom: "",
+            dateto: "",
           };
           $('input[type=checkbox]').prop('checked', false)
         },
@@ -140,7 +145,7 @@ const Base = {
   },
 
   addSegListTag: function (segId, segInfo) {
-    const segInfoStr = " (업종: " +segInfo.upjong+ " / 구매액: " + segInfo.sales + " / 기간: " + segInfo.period + ")"
+    const segInfoStr = " (업종: " +segInfo.upjong+ " / 구매액: " + segInfo.sales + " / 기간: " + segInfo.datefrom + "~" + segInfo.dateto + ")"
     let $list = $('<div class="list-group-item list-group-item-action d-flex"><div style="width: 90%; margin-right: auto;">' + segInfo.model_nm + segInfoStr +'</div></div>');
     const $btnTag =$( '<button type="button" class="btn btn-sm btn-danger float-right m-0 removeSeg" value="' 
     + segId+'">삭제</button>').on("click", function () {
@@ -235,12 +240,37 @@ const Base = {
       });
     }
   },
-  // chartCluster: function() {
-    
-  // }
+  
+  onDashboardLoad: function(payload) {
+      console.log("Do something when the dashboard is fully loaded.");
+  },
+
+  onError: function(payload) {
+      console.log("Do something when the dashboard fails loading");
+  },
+
+  embedDashboard: function() {
+      var containerDiv = document.getElementById("dashboardContainer");
+      var options = {
+          url: "https://ap-northeast-2.quicksight.aws.amazon.com/sn/dashboards/179b05c0-2279-4a0f-8136-25d724d904e3/sheets/179b05c0-2279-4a0f-8136-25d724d904e3_d01af2c5-e31e-44a0-b0d3-ec48aed586ef?isauthcode=true&identityprovider=quicksight&code=authcode",
+          container: containerDiv,
+          parameters: {
+              country: "United States"
+          },
+          scrolling: "no",
+          height: "700px",
+          width: "1000px"
+      };
+      dashboard = QuickSightEmbedding.embedDashboard(options);
+      dashboard.on("error", onError);
+      dashboard.on("load", onDashboardLoad);
+  },
+
+  onCountryChange: function(obj) {
+      dashboard.setParameters({country: obj.value});
+  }
 };
 
 
 Base.init();
-
 
