@@ -3019,8 +3019,8 @@ License - nucleoapp.com/license/
   .sidebar .sidebar-wrapper,
   .off-canvas-sidebar .sidebar-wrapper {
     position: relative;
-    height: calc(100vh - 75px);
-    overflow: auto;
+    // height: calc(100vh - 75px);
+    // overflow: auto;
     width: 260px;
     z-index: 4;
     padding-bottom: 100px; }
@@ -3645,8 +3645,10 @@ License - nucleoapp.com/license/
   position: relative;
   border: 0 none;
   transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 200ms ease; 
-  
-  min-width: 940px;}
+  }
+.cluster .card {
+  min-width: 940px;
+}
   .card .card-body {
     padding: 15px 15px 10px 15px; }
     .card .card-body.table-full-width {

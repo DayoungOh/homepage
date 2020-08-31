@@ -72,9 +72,9 @@ const DashboardChart = function () {
       chart.loadChart(data)
     },
     loadChart: function (data) {
-      const selectedSeg0 = $("#segmentSelect0 option:selected").text();
-      const selectedSeg1 = $("#segmentSelect1 option:selected").text();
-      const selectedSeg2 = $("#segmentSelect2 option:selected").text();
+      const selectedSeg0 = $("#segmentSelect0 option:selected").text().split("(")[0];
+      const selectedSeg1 = $("#segmentSelect1 option:selected").text().split("(")[0];
+      const selectedSeg2 = $("#segmentSelect2 option:selected").text().split("(")[0];
       let myChart1 = new Chart("myChart1", {
         type: "bar",
         data: {
@@ -91,7 +91,7 @@ const DashboardChart = function () {
         options: {
           ...chartOptions.segBarChartOption1,
           legend: {
-            display: true
+            display: false
           }
         },
       });
@@ -109,7 +109,12 @@ const DashboardChart = function () {
             },
           ],
         },
-        options: chartOptions.segBarChartOption2,
+        options: {
+          ...chartOptions.segBarChartOption2,
+          legend: {
+            display: false
+          }
+        },
       });
 
       let myChart3 = new Chart("myChart3", {
@@ -221,17 +226,7 @@ const DashboardChart = function () {
             },
           ],
         },
-        options: {
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  baseAtZero: true,
-                },
-              },
-            ],
-          },
-        },
+        options: chartOptions.segBarChartOption1,
       });
 
       let myChart10 = new Chart("myChart10", {
