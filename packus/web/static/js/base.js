@@ -179,24 +179,25 @@ const Base = {
   segReportDateInit: function() {
     const today = new Date();
     const [year, month, day] = today.toISOString().slice(0, 10).split('-')
-    $('#termSelectFrom').val((year -1) + "-" + month +"-"+ day)
-    $('#termSelectTo').val(year + "-" + month +"-"+ day)
+    // $('#termSelectFrom').val((year -1) + "-" + month +"-"+ day)
+    // $('#termSelectTo').val(year + "-" + month +"-"+ day)
   },
-  loadSegDashboardData: function () {
-    if ( $('#termSelectFrom')[0].value === "" || $('#termSelectTo')[0].value === "") {
-      alert('분석기간을 입력해주세요!')
-    } else {
+  loadSegDashboardData: function (segInfo) {
+    // if ( $('#termSelectFrom')[0].value === "" || $('#termSelectTo')[0].value === "") {
+    //   alert('분석기간을 입력해주세요!')
+    // } else {
       let selectedSeg0 = $('#segmentSelect0 option:selected')[0].value.split('|')
       let selectedSeg1 = $('#segmentSelect1 option:selected')[0].value.split('|')
       let selectedSeg2 = $('#segmentSelect2 option:selected')[0].value.split('|')
   
       const segCond = { // 조건 생성
         "search_cond_list": [
-          {"datefrom": $('#termSelectFrom')[0].value, "dateto" :$('#termSelectTo')[0].value, "upjong3_nm": selectedSeg0[1], "sales_cond": selectedSeg0[2]},
-          {"datefrom": $('#termSelectFrom')[0].value, "dateto" :$('#termSelectTo')[0].value, "upjong3_nm": selectedSeg1[1], "sales_cond": selectedSeg1[2]},
-          {"datefrom": $('#termSelectFrom')[0].value, "dateto" :$('#termSelectTo')[0].value, "upjong3_nm": selectedSeg2[1], "sales_cond": selectedSeg2[2]}
+          {"datefrom": selectedSeg0[3].split('~')[0], "dateto" : selectedSeg0[3].split('~')[1], "upjong3_nm": selectedSeg0[1], "sales_cond": selectedSeg0[2]},
+          {"datefrom": selectedSeg1[3].split('~')[0], "dateto" : selectedSeg1[3].split('~')[1], "upjong3_nm": selectedSeg1[1], "sales_cond": selectedSeg1[2]},
+          {"datefrom": selectedSeg2[3].split('~')[0], "dateto" : selectedSeg2[3].split('~')[1], "upjong3_nm": selectedSeg2[1], "sales_cond": selectedSeg2[2]}
         ]
       }
+      debugger;
   
       $.ajax({
         type: "post",
@@ -238,7 +239,7 @@ const Base = {
           alert("세그먼트 데이터를 가져오지 못했습니다.");
         },
       });
-    }
+    // }
   },
   
   onDashboardLoad: function(payload) {
