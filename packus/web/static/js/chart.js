@@ -274,8 +274,6 @@ const DashboardChart = function () {
       chart.myChart11 = myChart11
     },
     loadChartCluster: function (data) {
-      var clusterChart1 = document.getElementById("myChart_cluster1");
-      //clusterChart1.height = 350;
       let myChart_cluster1 = new Chart("myChart_cluster1", {
         type: "horizontalBar",
         data: {
@@ -289,12 +287,13 @@ const DashboardChart = function () {
             },
           ],
         },
-        options: chartOptions.segBarChartOption1,
+        options: {
+          ...chartOptions.segBarChartOption1,
+          maintainAspectRatio: false,
+        },
       });
 
       chart.myChart_cluster1 = myChart_cluster1
-      chart.myChart_cluster1.height = '350px';
-
     },
   };
   return chart;
