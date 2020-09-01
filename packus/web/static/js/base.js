@@ -28,6 +28,8 @@ const Base = {
       Base.loadSegDashboardData();
     });
     Base.segReportDateInit();
+
+    $('.content').parent().removeClass('h-100');
   },
 
   segInfo: {
@@ -56,6 +58,7 @@ const Base = {
           checkedValues.push($($checkedTags[i]).attr('value'))
         }
         Base.segInfo[name] = checkedValues.join(",");
+        debugger;
       }
     });
   },
@@ -101,8 +104,8 @@ const Base = {
 
   createSeg: function () {
     Base.segInfo.model_nm = $("#seg-name").val();
-    Base.segInfo.datefrom = $('#periodFrom')[0].value;
-    Base.segInfo.dateto = $('#periodTo')[0].value;
+    Base.segInfo.datefrom = $('#periodFrom').val();
+    Base.segInfo.dateto = $('#periodTo').val();
     const flag = Base.segInfovalidator(Base.segInfo)
     if (flag === "OK") {
       $.ajax({
@@ -129,6 +132,7 @@ const Base = {
     } else {
       alert(flag);
     }
+    debugger;
   },
   segInfovalidator: function (segInfo) {
     for (let i = 0; i < Object.values(segInfo).length; i++) {
@@ -197,7 +201,6 @@ const Base = {
           {"datefrom": selectedSeg2[3].split('~')[0], "dateto" : selectedSeg2[3].split('~')[1], "upjong3_nm": selectedSeg2[1], "sales_cond": selectedSeg2[2]}
         ]
       }
-      debugger;
   
       $.ajax({
         type: "post",
