@@ -21,7 +21,12 @@ const Base = {
     Base.loadUpjongList();
     Base.loadSegList();
     Base.initCheckbox();
-    dashboardChart.loadChartCluster();
+    
+
+    $('#cluster-report').on('click', function() {
+      debugger;
+      Base.loadChartCluster();
+    }); 
     
     // 조회버튼 클릭
     $('#surf-btn').on('click', function() {

@@ -41,24 +41,39 @@ def cluster():
     menu = 'cluster'
     return render_template('index.html', menu=menu)
 
-@app.route('/okpos')
-@app.route('/okpos/upjong')
+@app.route('/event')
+@app.route('/event/upjong')
 def upjong():
     menu = 'upjong'
     return render_template('index.html', menu=menu)
 
-@app.route('/okpos/area')
+@app.route('/event/area')
 def area():
     menu = 'area'
     return render_template('index.html', menu=menu)
 
-@app.route('/okpos/total')
+@app.route('/event/total')
 def total():
     menu = 'total'
     return render_template('index.html', menu=menu)    
 
+@app.route('/event/ad/catalog')
+def catalog():
+    menu = 'catalog'
+    return render_template('index.html', menu=menu)
 
-@app.route('/okpos/goal')
-def goal():
-    menu = 'goal'
+@app.route('/event/ad/sample')
+def sample():
+    menu = 'sample'
+    return render_template('index.html', menu=menu)
+
+@app.route('/event/ad/order')
+def order():
+    menu = 'order'
+    return render_template('index.html', menu=menu)
+
+
+@app.route('/event/shop')
+def shop():
+    menu = 'shop'
     return render_template('index.html', menu=menu)    

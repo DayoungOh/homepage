@@ -3016,7 +3016,10 @@ License - nucleoapp.com/license/
   width: 230px;
   left: 0;
   z-index: 1030;
-  border-right: 1px solid #ddd; }
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
   .sidebar .sidebar-wrapper,
   .off-canvas-sidebar .sidebar-wrapper {
     position: relative;

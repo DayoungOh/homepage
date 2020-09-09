@@ -76,55 +76,84 @@
             </ul>
           </li>
           <li
-              {% if menu == 'okpos' %}
+              {% if menu == 'event' %}
                 class="active"
               {% endif %}
             >
-            <a href="/okpos/total" id="pills-segments">
+            <a href="/event/total" id="pills-segments">
               <i class="nc-icon nc-spaceship"></i>
-              <p>OKPOS Event</p>
+              <p>Event</p>
             </a>
             <ul class="sub-menu mt-0">
-                <li class="sub-sidebar-brand"
-                    {% if menu == 'total' %}
-                        class="active"
-                      {% endif %}
-                    >
-                    <a href="/okpos/total" class="p-0 mt-0">―   클릭 Event<span class="sub_icon fa fa-hdd-o"></span></a>
-                    <ul class="sub-menu mt-0">
-                      <li class="sub-sidebar-brand"
-                          {% if menu == 'total' %}
-                              class="active"
-                            {% endif %}
-                          >
-                          <a href="/okpos/total" class="p-0 mt-0">―   Total<span class="sub_icon fa fa-hdd-o"></span></a>
-                      </li>
-                      <li class="sub-sidebar-brand"
-                          {% if menu == 'upjong' %}
-                              class="active"
-                            {% endif %}
-                          >
-                          <a href="/okpos/upjong" class="p-0 mt-0">―   업종별<span class="sub_icon fa fa-hdd-o"></span></a>
-                      </li>
-                      <li class="sub-sidebar-brand"
-                          {% if menu == 'area' %}
-                              class="active"
-                            {% endif %}
-                          >
-                          <a href="/okpos/area" class="p-0 mt-0">―   지역별<span class="sub_icon fa fa-hdd-o"></span></a>
-                      </li>
-                  </ul>
-                </li>
+              <li class="sub-sidebar-brand"
+                  {% if menu == 'total' %}
+                      class="active"
+                    {% endif %}
+                  >
+                  <a href="/event/total" class="p-0 mt-0">―   Total<span class="sub_icon fa fa-hdd-o"></span></a>
+              </li>
+              <li class="sub-sidebar-brand"
+                  {% if menu == 'upjong' %}
+                      class="active"
+                    {% endif %}
+                  >
+                  <a href="/event/upjong" class="p-0 mt-0">―   업종별<span class="sub_icon fa fa-hdd-o"></span></a>
+              </li>
+              <li class="sub-sidebar-brand"
+                  {% if menu == 'area' %}
+                      class="active"
+                    {% endif %}
+                  >
+                  <a href="/event/area" class="p-0 mt-0">―   지역별<span class="sub_icon fa fa-hdd-o"></span></a>
+              </li>
+              <li class="sub-sidebar-brand"
+                {% if menu == 'catalog' %}
+                    class="active"
+                  {% endif %}
+                >
+                <a href="/event/ad/catalog" class="p-0 mt-0">―   광고 Event<span class="sub_icon fa fa-hdd-o"></span></a>
+                <ul class="sub-menu mt-0">
+                  <li class="sub-sidebar-brand"
+                      {% if menu == 'catalog' %}
+                          class="active"
+                        {% endif %}
+                      >
+                      <a href="/event/ad/catalog" class="p-0 mt-0">―   카달로그<span class="sub_icon fa fa-hdd-o"></span></a>
+                  </li>
+                  <li class="sub-sidebar-brand"
+                      {% if menu == 'sample' %}
+                          class="active"
+                        {% endif %}
+                      >
+                      <a href="/event/ad/sample" class="p-0 mt-0">―   샘플신청<span class="sub_icon fa fa-hdd-o"></span></a>
+                  </li>
+                  <li class="sub-sidebar-brand"
+                      {% if menu == 'order' %}
+                          class="active"
+                        {% endif %}
+                      >
+                      <a href="/event/ad/order" class="p-0 mt-0">―   소량주문<span class="sub_icon fa fa-hdd-o"></span></a>
+                  </li>
+                </ul>
+              </li>
+              <li class="sub-sidebar-brand"
+                  {% if menu == 'shop' %}
+                      class="active"
+                    {% endif %}
+                  >
+                  <a href="/event/shop" class="p-0" style="margin-top: 60px;">―   언택트 장보기<span class="sub_icon fa fa-hdd-o"></span></a>
+              </li>
             </ul>
-            <ul class="sub-menu" style="margin-top: 100px;">
+          </ul>
+            <!-- <ul class="sub-menu" style="margin-top: 100px;">
                 <li class="sub-sidebar-brand"
                     {% if menu == 'goal' %}
                         class="active"
                       {% endif %}
                     >
-                    <a href="/okpos/goal" class="p-0 mt-0">―   목표달성<span class="sub_icon fa fa-hdd-o"></span></a>
+                    <a href="/event/goal" class="p-0 mt-0">―   목표달성<span class="sub_icon fa fa-hdd-o"></span></a>
                 </li>
-            </ul>
+            </ul> -->
           </li>
         </ul>
       </div>
@@ -142,13 +171,21 @@
       {% elif menu == 'cluster' %}
         {% include "rfm/cluster.html" %}
       {% elif menu == 'total' %}
-        {% include "okpos/total.html" %}
+        {% include "event/total.html" %}
       {% elif menu == 'upjong' %}
-        {% include "okpos/upjong.html" %}
+        {% include "event/upjong.html" %}
       {% elif menu == 'area' %}
-        {% include "okpos/area.html" %}     
-      {% elif menu == 'goal' %}
-        {% include "okpos/goal.html" %}
+        {% include "event/area.html" %}     
+      <!-- {% elif menu == 'goal' %}
+        {% include "event/goal.html" %} -->
+      {% elif menu == 'catalog' %}
+        {% include "event/ad/catalog.html" %}
+      {% elif menu == 'sample' %}
+        {% include "event/ad/sample.html" %}
+      {% elif menu == 'order' %}
+        {% include "event/ad/order.html" %}
+      {% elif menu == 'shop' %}
+        {% include "event/shop.html" %}
       {% endif %}
     </div>
 
