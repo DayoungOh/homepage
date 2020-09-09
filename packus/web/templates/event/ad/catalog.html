@@ -1,1 +1,89 @@
-<iframe src="https://ap-northeast-2.quicksight.aws.amazon.com/sn/dashboards/179b05c0-2279-4a0f-8136-25d724d904e3/sheets/179b05c0-2279-4a0f-8136-25d724d904e3_5d1a27d1-b8c1-44bb-98c5-87abf5c2f810" height="100%" width="100%" frameborder="0"></iframe>
+{% block mainpanel %}
+<!-- 대시보드 화면-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.517.0.min.js"></script>
+	<script> 
+		//area
+		//const sheets = "/sheets/179b05c0-2279-4a0f-8136-25d724d904e3_d01af2c5-e31e-44a0-b0d3-ec48aed586ef?";
+		//upjong
+		//const sheets = "/sheets/179b05c0-2279-4a0f-8136-25d724d904e3_5d1a27d1-b8c1-44bb-98c5-87abf5c2f810?";
+		//total
+		//const sheets = "?";
+		//catalog
+		const sheets = "/sheets/179b05c0-2279-4a0f-8136-25d724d904e3_2aefdf42-4b4c-400e-aa30-bdd1fb2a0876?";
+//sample
+//const sheets = "/sheets/179b05c0-2279-4a0f-8136-25d724d904e3_ba1c9dbe-ac00-43c3-abf6-c3f8e47ff4fb?";
+//small order
+//const sheets = "/sheets/179b05c0-2279-4a0f-8136-25d724d904e3_21d9370c-7fce-40e8-b495-b096f9d6a2bd?";
+//shop
+//const sheets = "/sheets/179b05c0-2279-4a0f-8136-25d724d904e3_a8f670a3-107d-45c3-924d-23389193e7aa?";
+
+
+apiGatewayGetDashboardEmbedUrl(); 
+
+function onVisualLoaded() {
+	            var div = document.getElementById("loadedContainer");
+	            div.innerHTML = "Dashboard fully loaded";
+}
+
+function onError() {
+	            var div = document.getElementById("errorContainer");
+	            div.innerHTML = "your seesion has expired";
+}
+
+function embedDashboard(embedUrl) {
+	    console.log("embedUrl:" + embedUrl);
+
+	    var tmpEmbedUrl = embedUrl.split('?')[0];
+	    var sheetEmbedUrl = tmpEmbedUrl + sheets + embedUrl.split('?')[1]
+
+	    var containerDiv = document.getElementById("dashboardContainer");
+
+	    var params = {
+		            url: sheetEmbedUrl,
+		            container: containerDiv,
+		            height: "100%"
+		        };
+	    var dashboard = QuickSightEmbedding.embedDashboard(params);
+	    dashboard.on('error', onError);
+	    dashboard.on('load', onVisualLoaded);
+}
+
+function apiGatewayGetDashboardEmbedUrl() {
+
+	    const headers = { 
+		                        'Content-Type' : 'application/json' ,
+		                        'Access-Control-Allow-Origin': '*'
+		                    }
+	    const apiGatewayUrl = '../../packusQuickSightEmbedAPI/getDashboardEmbedURL?';
+	    axios.post(apiGatewayUrl, {
+		                        "dashboardId": '179b05c0-2279-4a0f-8136-25d724d904e3',
+		                        "userArn": "arn:aws:quicksight:ap-northeast-2:780124858304:user/default/QuickSightEmbedRole/quicksightembed@nice.co.kr",
+		                        "resetDisabled": "false",
+		                        "undoRedoDisabled": "false"
+		                    }, {
+					                                    headers :headers
+					                                })
+	    .then(function (response) {
+		                        
+		                        console.log(response);
+		                        if (response.status == 200 && response.data.statusCode == 200) {
+						                                        const body = JSON.parse(response.data.body);
+
+						                                        console.log(body);
+						                                        embedDashboard(body.EmbedUrl);
+						                                    } else {
+											                                                            console.log("error");
+											                                                        }            
+		                    })
+	    .catch(function (error) {
+		                        console.log(error);
+		                    });
+
+}
+
+</Script> 
+
+    
+ <div id="dashboardContainer" style="height: 100%"></div>
+ {% endblock %}
