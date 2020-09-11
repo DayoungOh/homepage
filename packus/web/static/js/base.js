@@ -24,13 +24,19 @@ const Base = {
     
 
     $('#cluster-report').on('click', function() {
-      debugger;
       Base.loadChartCluster();
     }); 
     
     // 조회버튼 클릭
     $('#surf-btn').on('click', function() {
       Base.loadSegDashboardData();
+      $('#segmentMemberList').empty();
+      Base.selectBoxMemberList();
+      Base.segmentMemberListInit();
+    });
+    $('#seg-memlist').on('click', function() {
+      $('#segmentMemberList').empty();
+      Base.segmentMemberListInit();
     });
     Base.segReportDateInit();
 
@@ -63,7 +69,6 @@ const Base = {
           checkedValues.push($($checkedTags[i]).attr('value'))
         }
         Base.segInfo[name] = checkedValues.join(",");
-        debugger;
       }
     });
   },
@@ -89,6 +94,27 @@ const Base = {
       + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.sales+', 기간:'+segInfo.datefrom+'~'+segInfo.dateto+')</option>'))
     $('select#segmentSelect2').append($('<option value="'+segInfoStr+'" '
       + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.sales+', 기간:'+segInfo.datefrom+'~'+segInfo.dateto+')</option>'))
+    
+    },
+  selectBoxMemberList: function() {
+    $('select#segmentSelectML').append($('<option value="' + $('select#segmentSelect0').val() + '">' + $('select#segmentSelect0').val() + ')</option>'))
+                              .append($('<option value="' + $('select#segmentSelect1').val() + '">' + $('select#segmentSelect1').val() + ')</option>'))
+                              .append($('<option value="' + $('select#segmentSelect2').val() + '">' + $('select#segmentSelect2').val() + ')</option>'))
+  },
+  segmentMemberListInit: function() {
+    let upjong = $('select#segmentSelectML option:selected').val().split("|")[1];
+    let salesFrom = $('select#segmentSelectML option:selected').val().split("|")[2].split("~")[0].replace("원", "");
+    let salesTo = "";
+    if(salesFrom == '1000000') {
+      salesTo = '5000000';
+    } else {
+      salesTo = $('select#segmentSelectML option:selected').val().split("|")[2].split("~")[1].replace("원", "");
+    }
+    let periodFrom = $('select#segmentSelectML option:selected').val().split("|")[3].substring(0, 10);
+    let periodTo = $('select#segmentSelectML option:selected').val().split("|")[3].substring(11, 21);
+    const iframeSrc = "https://52.78.186.240/s/packus/app/kibana#/dashboard/83683eb0-f3c7-11ea-b4c2-dd534a99a192?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(description:'',filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:upjong3_nm,negate:!f,params:(query:" + upjong + "),type:phrase),query:(match_phrase:(upjong3_nm:" + upjong + "))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:totalgoodsprice,negate:!f,params:(gte:" + salesFrom + ",lt:" + salesTo + "),type:range),range:(totalgoodsprice:(gte:" + salesFrom + ",lt:" + salesTo + "))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:regdt,negate:!f,params:(gte:'" + periodFrom + "',lt:'" + periodTo + "'),type:range),range:(regdt:(gte:'" + periodFrom + "',lt:'" + periodTo + "')))),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:16,i:'6ba007f7-cf77-4c8e-94f9-0e276f8b385a',w:48,x:0,y:0),id:'46199260-d2c6-11ea-83ec-578bbedbe7b6',panelIndex:'6ba007f7-cf77-4c8e-94f9-0e276f8b385a',type:search,version:'7.8.0')),query:(language:kuery,query:''),timeRestore:!f,title:'segment%20member%20list',viewMode:edit)"
+  
+    $('#segmentMemberList').append($('<iframe src="'+iframeSrc+'" height="100%" width="100%" frameborder="0" style="border-radius: .8rem;"></iframe>'))
   },
   loadUpjongList: function () {
     $.ajax({
@@ -137,7 +163,6 @@ const Base = {
     } else {
       alert(flag);
     }
-    debugger;
   },
   segInfovalidator: function (segInfo) {
     for (let i = 0; i < Object.values(segInfo).length; i++) {
@@ -154,7 +179,7 @@ const Base = {
   },
 
   addSegListTag: function (segId, segInfo) {
-    const segInfoStr = " (업종: " +segInfo.upjong+ " / 구매액: " + segInfo.sales + " / 기간: " + segInfo.datefrom + "~" + segInfo.dateto + ")"
+    const segInfoStr = " (업종: " + segInfo.upjong + " / 구매액: " + segInfo.sales + " / 기간: " + segInfo.datefrom + "~" + segInfo.dateto + ")"
     let $list = $('<div class="list-group-item list-group-item-action d-flex"><div style="width: 90%; margin-right: auto;">' + segInfo.model_nm + segInfoStr +'</div></div>');
     const $btnTag =$( '<button type="button" class="btn btn-sm btn-danger float-right m-0 removeSeg" value="' 
     + segId+'">삭제</button>').on("click", function () {
