@@ -247,17 +247,17 @@ def sales_validator(sales_cond, sales):
     """
     i = 0
     for cond in sales_cond:
-        if cond == '100만원 이상':
+        if cond == '1000000':
             i += (sales >= 1000000)
-        elif cond == '50 - 100만원':
+        elif cond == '500000~1000000':
             i += (sales >= 500000 and sales < 1000000)
-        elif cond == '30 - 50만원':
+        elif cond == '300000~500000':
             i += (sales >= 300000 and sales < 500000)
-        elif cond == '15 - 30만원':
+        elif cond == '150000~300000':
             i += (sales >= 150000 and sales < 300000)
-        elif cond == '5 - 15만원':
+        elif cond == '50000~150000':
             i += (sales >= 50000 and sales < 150000)
-        elif cond == '5만원 미만':
+        elif cond == '50000':
             i += (sales < 50000)
     return i > 0
 

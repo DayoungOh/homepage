@@ -1341,7 +1341,17 @@ textarea.form-control {
   font-size: inherit;
   line-height: 0;
   border-radius: 0; }
-
+.form-control-sm {
+  background-color: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  color: #66615b;
+  line-height: normal;
+  height: auto;
+  font-size: 14px;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  box-shadow: none;
+}
 .form-horizontal .col-form-label,
 .form-horizontal .label-on-right {
   padding: 10px 5px 0 15px;
