@@ -28,7 +28,7 @@
               <i class="nc-icon nc-chart-pie-36"></i>
               <p>패커스 RFM 모델</p>
             </a>
-            <ul class="sub-menu mt-0">
+            <ul class="list-styled-none mt-0">
               <li class="sub-sidebar-brand"
                   {% if menu == 'model' %}
                       class="active"
@@ -37,7 +37,7 @@
                   <a href="/rfm/model" class="p-0 mt-0">―   RFM 모델<span class="sub_icon fa fa-hdd-o"></span></a>
                 </li>
             </ul>
-            <ul class="sub-menu mt-0">
+            <ul class="list-styled-none mt-0">
               <li class="sub-sidebar-brand"
                   {% if menu == 'cluster' %}
                       class="active"
@@ -47,7 +47,7 @@
                 </li>
             </ul>
           </li>
-          <li
+          <!-- <li
               {% if menu == 'segments' %}
                 class="active"
               {% endif %}
@@ -56,7 +56,7 @@
               <i class="nc-icon nc-bulb-63"></i>
               <p>세그먼트</p>
             </a>
-            <ul class="sub-menu mt-0">
+            <ul class="list-styled-none mt-0">
                 <li class="sub-sidebar-brand"
                     {% if menu == 'segments' %}
                         class="active"
@@ -65,7 +65,7 @@
                     <a href="/segments/segments" class="p-0 mt-0">―   세그먼트 생성<span class="sub_icon fa fa-hdd-o"></span></a>
                 </li>
             </ul>
-            <ul class="sub-menu mt-2">
+            <ul class="list-styled-none mt-0">
                 <li class="sub-sidebar-brand"
                     {% if menu == 'seg_reports' %}
                         class="active"
@@ -74,7 +74,7 @@
                     <a href="/segments/seg_reports" class="p-0 mt-0">―   세그먼트<span class="sub_icon fa fa-hdd-o"></span></a>
                 </li>
             </ul>
-          </li>
+          </li> -->
           <li
               {% if menu == 'event' %}
                 class="active"
@@ -84,14 +84,14 @@
               <i class="nc-icon nc-spaceship"></i>
               <p>광고 Event Tracking</p>
             </a>
-            <ul class="sub-menu mt-0">
+            <ul class="list-styled-none mt-0">
               <li class="sub-sidebar-brand"
                 {% if menu == 'catalog' %}
                     class="active"
                   {% endif %}
                 >
                 <a href="/event/total" class="p-0 mt-0">―   전체 개요<span class="sub_icon fa fa-hdd-o"></span></a>
-                <ul class="sub-menu mt-0">
+                <ul class="list-styled-none mt-0">
                   <li class="sub-sidebar-brand"
                       {% if menu == 'total' %}
                           class="active"
@@ -115,13 +115,15 @@
                   </li>
                 </ul>
               </li>
+            </ul>
+            <ul class="list-styled-none mt-0">
               <li class="sub-sidebar-brand"
                 {% if menu == 'sample' %}
                     class="active"
                   {% endif %}
                 >
-                <a href="/event/ad/sample" class="p-0" style="margin-top: 67px!important;">―   OKPOS 정기 Event<span class="sub_icon fa fa-hdd-o"></span></a>
-                <ul class="sub-menu mt-0">
+                <a href="/event/ad/sample" class="p-0">―   OKPOS 정기 Event<span class="sub_icon fa fa-hdd-o"></span></a>
+                <ul class="list-styled-none mt-0">
                   <li class="sub-sidebar-brand"
                       {% if menu == 'sample' %}
                           class="active"
@@ -145,24 +147,44 @@
                   </li>
                 </ul>
               </li>
+            </ul>
+            <ul class="list-styled-none mt-0">
               <li class="sub-sidebar-brand"
                   {% if menu == 'catalog' %}
                       class="active"
                     {% endif %}
                   >
-                  <a href="/event/ad/catalog" class="p-0" style="margin-top: 67px!important;">―   카달로그 Event<span class="sub_icon fa fa-hdd-o"></span></a>
+                  <a href="/event/ad/catalog" class="p-0">―   카달로그 Event<span class="sub_icon fa fa-hdd-o"></span></a>
               </li>
             </ul>
-          </ul>
-            <!-- <ul class="sub-menu" style="margin-top: 100px;">
+          </li>
+          <li
+              {% if menu == 'segments' %}
+                class="active"
+              {% endif %}
+            >
+            <a href="/segments/segments" id="pills-segments">
+              <i class="nc-icon nc-bulb-63"></i>
+              <p>세그먼트</p>
+            </a>
+            <ul class="list-styled-none mt-0">
                 <li class="sub-sidebar-brand"
-                    {% if menu == 'goal' %}
+                    {% if menu == 'segments' %}
                         class="active"
                       {% endif %}
                     >
-                    <a href="/event/goal" class="p-0 mt-0">―   목표달성<span class="sub_icon fa fa-hdd-o"></span></a>
+                    <a href="/segments/segments" class="p-0 mt-0">―   세그먼트 생성<span class="sub_icon fa fa-hdd-o"></span></a>
                 </li>
-            </ul> -->
+            </ul>
+            <ul class="list-styled-none mt-0">
+                <li class="sub-sidebar-brand"
+                    {% if menu == 'seg_reports' %}
+                        class="active"
+                      {% endif %}
+                    >
+                    <a href="/segments/seg_reports" class="p-0 mt-0">―   세그먼트<span class="sub_icon fa fa-hdd-o"></span></a>
+                </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -184,9 +206,7 @@
       {% elif menu == 'upjong' %}
         {% include "event/upjong.html" %}
       {% elif menu == 'area' %}
-        {% include "event/area.html" %}     
-      <!-- {% elif menu == 'goal' %}
-        {% include "event/goal.html" %} -->
+        {% include "event/area.html" %}    
       {% elif menu == 'catalog' %}
         {% include "event/ad/catalog.html" %}
       {% elif menu == 'sample' %}
