@@ -21,11 +21,12 @@ const Base = {
     Base.loadUpjongList();
     Base.loadSegList();
     Base.initCheckbox();
+    dashboardChart.loadChartCluster();
     
 
-    $('#cluster-report').on('click', function() {
-      Base.loadChartCluster();
-    }); 
+    // $('#cluster-report').on('click', function() {
+    //   Base.loadChartCluster();
+    // }); 
     
     // 조회버튼 클릭
     $('#surf-btn').on('click', function() {
@@ -112,8 +113,7 @@ const Base = {
     }
     let periodFrom = $('select#segmentSelectML option:selected').val().split("|")[3].substring(0, 10);
     let periodTo = $('select#segmentSelectML option:selected').val().split("|")[3].substring(11, 21);
-    const iframeSrc = "https://52.78.186.240/s/packus/app/kibana#/dashboard/83683eb0-f3c7-11ea-b4c2-dd534a99a192?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(description:'',filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:upjong3_nm,negate:!f,params:(query:" + upjong + "),type:phrase),query:(match_phrase:(upjong3_nm:" + upjong + "))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:totalgoodsprice,negate:!f,params:(gte:" + salesFrom + ",lt:" + salesTo + "),type:range),range:(totalgoodsprice:(gte:" + salesFrom + ",lt:" + salesTo + "))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:regdt,negate:!f,params:(gte:'" + periodFrom + "',lt:'" + periodTo + "'),type:range),range:(regdt:(gte:'" + periodFrom + "',lt:'" + periodTo + "')))),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:16,i:'6ba007f7-cf77-4c8e-94f9-0e276f8b385a',w:48,x:0,y:0),id:'46199260-d2c6-11ea-83ec-578bbedbe7b6',panelIndex:'6ba007f7-cf77-4c8e-94f9-0e276f8b385a',type:search,version:'7.8.0')),query:(language:kuery,query:''),timeRestore:!f,title:'segment%20member%20list',viewMode:edit)"
-  
+    const iframeSrc = "https://52.78.186.240/s/packus/app/kibana#/dashboard/c6846cb0-f62d-11ea-b4c2-dd534a99a192?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-5y%2Fy,to:now))&_a=(description:'',filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:upjong3_nm,negate:!f,params:(query:" + upjong + "),type:phrase),query:(match_phrase:(upjong3_nm:" + upjong + "))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:regdt,negate:!f,params:(gte:'" + periodFrom + "',lt:'" + periodTo + "'),type:range),range:(regdt:(gte:'" + periodFrom + "',lt:'" + periodTo + "'))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:totalgoodsprice,negate:!f,params:(gte:" + salesFrom + ",lt:" + salesTo + "),type:range),range:(totalgoodsprice:(gte:" + salesFrom + ",lt:" + salesTo + ")))),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:%5B%EC%84%B8%EA%B7%B8%EB%A8%BC%ED%8A%B8%5D%EA%B3%A0%EA%B0%9D%EB%A6%AC%EC%8A%A4%ED%8A%B8,viewMode:view)"
     $('#segmentMemberList').append($('<iframe src="'+iframeSrc+'" height="100%" width="100%" frameborder="0" style="border-radius: .8rem;"></iframe>'))
   },
   loadUpjongList: function () {
