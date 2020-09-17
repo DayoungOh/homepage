@@ -84,7 +84,7 @@
               <i class="nc-icon nc-spaceship"></i>
               <p>광고 Event Tracking</p>
             </a>
-            <ul class="list-styled-none mt-0">
+            <!-- <ul class="list-styled-none mt-0">
               <li class="sub-sidebar-brand"
                 {% if menu == 'catalog' %}
                     class="active"
@@ -122,21 +122,21 @@
                     class="active"
                   {% endif %}
                 >
-                <a href="/event/ad/sample" class="p-0">―   OKPOS 정기 Event<span class="sub_icon fa fa-hdd-o"></span></a>
+                <a href="/event/sample" class="p-0">―   OKPOS 정기 Event<span class="sub_icon fa fa-hdd-o"></span></a>
                 <ul class="list-styled-none mt-0">
                   <li class="sub-sidebar-brand"
                       {% if menu == 'sample' %}
                           class="active"
                         {% endif %}
                       >
-                      <a href="/event/ad/sample" class="p-0 mt-0">―   샘플신청<span class="sub_icon fa fa-hdd-o"></span></a>
+                      <a href="/event/sample" class="p-0 mt-0">―   샘플신청<span class="sub_icon fa fa-hdd-o"></span></a>
                   </li>
                   <li class="sub-sidebar-brand"
                       {% if menu == 'order' %}
                           class="active"
                         {% endif %}
                       >
-                      <a href="/event/ad/order" class="p-0 mt-0">―   소량주문<span class="sub_icon fa fa-hdd-o"></span></a>
+                      <a href="/event/order" class="p-0 mt-0">―   소량주문<span class="sub_icon fa fa-hdd-o"></span></a>
                   </li>
                   <li class="sub-sidebar-brand"
                     {% if menu == 'shop' %}
@@ -154,9 +154,9 @@
                       class="active"
                     {% endif %}
                   >
-                  <a href="/event/ad/catalog" class="p-0">―   카달로그 Event<span class="sub_icon fa fa-hdd-o"></span></a>
+                  <a href="/event/catalog" class="p-0">―   카달로그 Event<span class="sub_icon fa fa-hdd-o"></span></a>
               </li>
-            </ul>
+            </ul> -->
           </li>
           <li
               {% if menu == 'segments' %}
@@ -208,11 +208,11 @@
       {% elif menu == 'area' %}
         {% include "event/area.html" %}    
       {% elif menu == 'catalog' %}
-        {% include "event/ad/catalog.html" %}
+        {% include "event/catalog.html" %}
       {% elif menu == 'sample' %}
-        {% include "event/ad/sample.html" %}
+        {% include "event/sample.html" %}
       {% elif menu == 'order' %}
-        {% include "event/ad/order.html" %}
+        {% include "event/order.html" %}
       {% elif menu == 'shop' %}
         {% include "event/shop.html" %}
       {% endif %}
