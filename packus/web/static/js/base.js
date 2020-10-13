@@ -98,6 +98,7 @@ const Base = {
     
     },
   selectBoxMemberList: function() {
+    $('select#segmentSelectML option').remove();
     $('select#segmentSelectML').append($('<option value="' + $('select#segmentSelect0').val() + '">' + $('select#segmentSelect0').val() + ')</option>'))
                               .append($('<option value="' + $('select#segmentSelect1').val() + '">' + $('select#segmentSelect1').val() + ')</option>'))
                               .append($('<option value="' + $('select#segmentSelect2').val() + '">' + $('select#segmentSelect2').val() + ')</option>'))
