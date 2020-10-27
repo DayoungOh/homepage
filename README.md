@@ -22,7 +22,7 @@
 ### 로컬에서 테스트 서버 띄우기
 
 * `packus/start_local_http.py` 파일 실행
-  * `packus` 디렉토리 안에서 `$ run start_local_http.py` 명령어 실행
+  * `packus` 디렉토리 안에서 `$ python start_local_http.py` 명령어 실행
   * 기본적으로 `5000`번 포트 사용. `http://localhost:5000`에 접속하면 확인 가능. 
 
 ### api 사용 시 참고사항
