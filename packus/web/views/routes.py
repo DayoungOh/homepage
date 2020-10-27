@@ -77,3 +77,7 @@ def order():
 def shop():
     menu = 'shop'
     return render_template('index.html', menu=menu)    
+
+@app.route('/test/map')
+def test_map():
+    return render_template('test/map.html')    
