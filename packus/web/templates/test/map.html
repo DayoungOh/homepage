@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>지도테스트</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=301b5o4gx4&submodules=geocoder"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="map" style="display:inherit;width:800px;height:800px;margin-top:10px;margin-left:20px"></div>
+<button id="all-btn">전체보기</button>
+<button id="test-btn">테스트 텍스트 추가</button>
+<button id="init-btn">텍스트 초기화</button>
+<div id="zoom-map" style="display: none; width:800px;height:800px;margin-top:10px;margin-left:20px;background-color:gray"></div>
+
+<script>
+const CENTER = new naver.maps.LatLng(36.005432, 127.918499);
+const legend = {
+  1: '#51bcda',
+  2: '#6bd098',
+  3: '#fbc658',
+  4: '#ef8157',
+  5: '#51cbce'
+}
+
+const pInfo = [
+  {name: '서울', loc: new naver.maps.LatLng(37.5311008, 126.9810742), level: 1},
+  {name: '인천', loc: new naver.maps.LatLng(37.469221, 126.573234), level: 1},
+  {name: '광주', loc: new naver.maps.LatLng(35.236033, 126.831302), level: 1},
+  {name: '대구', loc: new naver.maps.LatLng(35.978838, 128.583052), level: 1},
+  {name: '울산', loc: new naver.maps.LatLng(35.569301, 129.239078), level: 2},
+  {name: '대전', loc: new naver.maps.LatLng(36.321655, 127.378953), level: 2},
+  {name: '부산', loc: new naver.maps.LatLng(35.198362, 129.053922), level: 2},
+  {name: '경기', loc: new naver.maps.LatLng(37.567167, 127.500292), level: 2},
+  {name: '강원', loc: new naver.maps.LatLng(37.555837, 128.209315), level: 3},
+  {name: '충북', loc: new naver.maps.LatLng(36.808503, 127.729344), level: 3},
+  {name: '충남', loc: new naver.maps.LatLng(36.557229, 126.779757), level: 4},
+  {name: '경북', loc: new naver.maps.LatLng(36.658647, 128.664734), level: 4},
+  {name: '경남', loc: new naver.maps.LatLng(35.459787, 128.104734), level: 5},
+  {name: '전북', loc: new naver.maps.LatLng(35.716705, 127.144185), level: 5},
+  {name: '전남', loc: new naver.maps.LatLng(34.889400, 126.893113), level: 5},
+  {name: '제주', loc: new naver.maps.LatLng(33.364805, 126.542671), level: 5},
+]
+const sInfo = [
+  {name: "은평구", loc: new naver.maps.LatLng(37.6176125, 126.9227004), level: 1},
+  {name: "동대문구", loc: new naver.maps.LatLng(37.5838012, 127.0507003), level: 1},
+  {name: "동작구", loc: new naver.maps.LatLng(37.4965037, 126.9443073), level: 1},
+  {name: "금천구", loc: new naver.maps.LatLng(37.4600969, 126.9001546), level: 1},
+  {name: "구로구", loc: new naver.maps.LatLng(37.4954856, 126.858121), level: 1},
+  {name: "종로구", loc: new naver.maps.LatLng(37.5990998, 126.9861493), level: 1},
+  {name: "강북구", loc: new naver.maps.LatLng(37.6469954, 127.0147158), level: 1},
+  {name: "중랑구", loc: new naver.maps.LatLng(37.5953795, 127.0939669), level: 2},
+  {name: "강남구", loc: new naver.maps.LatLng(37.4959854, 127.0664091), level: 2},
+  {name: "강서구", loc: new naver.maps.LatLng(37.5657617, 126.8226561), level: 2},
+  {name: "중구", loc: new naver.maps.LatLng(37.5579452, 126.9941904), level: 2},
+  {name: "강동구", loc: new naver.maps.LatLng(37.5492077, 127.1464824), level: 3},
+  {name: "광진구", loc: new naver.maps.LatLng(37.5481445, 127.0857528), level: 3},
+  {name: "마포구", loc: new naver.maps.LatLng(37.5622906, 126.9087803), level: 3},
+  {name: "서초구", loc: new naver.maps.LatLng(37.4769528, 127.0378103), level: 4},
+  {name: "성북구", loc: new naver.maps.LatLng(37.606991, 127.0232185), level: 4},
+  {name: "노원구", loc: new naver.maps.LatLng(37.655264, 127.0771201), level: 4},
+  {name: "송파구", loc: new naver.maps.LatLng(37.5048534, 127.1144822), level: 4},
+  {name: "서대문구", loc: new naver.maps.LatLng(37.5820369, 126.9356665), level: 4},
+  {name: "양천구", loc: new naver.maps.LatLng(37.5270616, 126.8561534), level: 4},
+  {name: "영등포구", loc: new naver.maps.LatLng(37.520641, 126.9139242), level: 5},
+  {name: "관악구", loc: new naver.maps.LatLng(37.4653993, 126.9438071), level: 5},
+  {name: "성동구", loc: new naver.maps.LatLng(37.5506753, 127.0409622), level: 5},
+  {name: "용산구", loc: new naver.maps.LatLng(37.5311008, 126.9810742), level: 5},
+]
+
+var map = new naver.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    minZoom: 8,
+    maxZoom: 8,
+    mapTypeId: 'normal',
+    center: CENTER
+});
+var zoomMap = new naver.maps.Map(document.getElementById('zoom-map'), {
+    zoom: 12,
+    minZoom: 12,
+    maxZoom: 12,
+    mapTypeId: 'normal',
+    center: new naver.maps.LatLng(37.5311008, 126.9810742)
+});
+const markerContent = (item) => 
+'<div class="marker-circle" style="text-align:center;width:80px;height:80px;font-size: 12px;background-color:'+legend[item.level]+'; border-radius:50%;opacity:0.8">'+ 
+  '<div style="padding-top: 20px">' + item.name + '<br><span class="sales-text"></span></div>' +'</div>';
+
+$('#all-btn').on('click', () => { 
+  $('#map').css('display', 'inherit')
+  $('#zoom-map').css('display', 'none')}
+)
+
+$('#test-btn').on('click', () => {
+  $('.sales-text').html('테스트')
+})
+$('#init-btn').on('click', () => {
+  $('.sales-text').html('')
+})
+
+const makeCircleAndMarker = (map, item) => {
+  const marker = new naver.maps.Marker({
+    map: map,
+    position: item.loc,
+    icon: {
+      // size: new naver.maps.Size(20),
+      anchor: new naver.maps.Point(10, 10),
+      content: markerContent(item),
+    },  
+    zIndex: 20
+  })
+  naver.maps.Event.addListener(marker, 'mouseover', function(e) {
+    $(e.domEvent.toElement).css('background-color', 'red')
+  });
+  naver.maps.Event.addListener(marker, 'mouseout', function(e) {
+    $(e.domEvent.fromElement).css('background-color', legend[item.level])
+  });
+  naver.maps.Event.addListener(marker, 'click', function() {
+    zoomMaps(item)
+  });
+}
+
+const makeCircleAndMarker2 = (map, item) => {
+  const marker = new naver.maps.Marker({
+    map: map,
+    position: item.loc,
+    icon: {
+      // size: new naver.maps.Size(20),
+      anchor: new naver.maps.Point(20, 7),
+      content: markerContent(item),
+    },  
+  })
+  naver.maps.Event.addListener(marker, 'mouseover', function(e) {
+    $(e.domEvent.toElement).css('background-color', 'red')
+  });
+  naver.maps.Event.addListener(marker, 'mouseout', function(e) {
+    $(e.domEvent.fromElement).css('background-color', legend[item.level])
+  });
+}
+
+pInfo.forEach(item => {
+  makeCircleAndMarker(map, item);
+  
+})
+
+const zoomMaps = (item) => {
+  zoomMap.setOptions({center: item.loc})
+  
+  $('#zoom-map').css('display', 'inherit')
+  $('#map').css('display', 'none')
+  if (item.name==='서울') {
+    sInfo.forEach(item => {
+      makeCircleAndMarker2(zoomMap, item)
+    });
+  }
+
+}
+
+naver.maps.Service.geocode({
+        address: '불정로 6'
+    }, function(status, response) {
+        if (status !== naver.maps.Service.Status.OK) {
+          console.log(response)
+            // return alert('Something wrong!');
+        }
+
+        var result = response.result, // 검색 결과의 컨테이너
+            items = result.items; // 검색 결과의 배열
+
+        // do Something
+    });
+
+
+</script>
+</body>
+</html>
