@@ -55,7 +55,12 @@ def area():
 @app.route('/event/total')
 def total():
     menu = 'total'
-    return render_template('index.html', menu=menu)    
+    return render_template('index.html', menu=menu)  
+
+@app.route('/event/sms')
+def sms():
+    menu = 'sms'
+    return render_template('index.html', menu=menu)   
 
 @app.route('/event/ad/catalog')
 def catalog():
@@ -80,4 +85,8 @@ def shop():
 
 @app.route('/test/map')
 def test_map():
-    return render_template('test/map.html')    
+    return render_template('test/map.html') 
+
+@app.route('/test/simple')
+def test_simple_map():
+    return render_template('test/simple.html')        
