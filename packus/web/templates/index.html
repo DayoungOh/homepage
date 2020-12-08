@@ -58,15 +58,6 @@
             </a>
             <ul class="list-styled-none mt-0">
                 <li class="sub-sidebar-brand"
-                    {% if menu == 'event' %}
-                        class="active"
-                      {% endif %}
-                    >
-                    <a href="/event/total" class="p-0 mt-0">―   Click Event<span class="sub_icon fa fa-hdd-o"></span></a>
-                </li>
-            </ul>
-            <ul class="list-styled-none mt-0">
-                <li class="sub-sidebar-brand"
                     {% if menu == 'sms' %}
                         class="active"
                       {% endif %}
@@ -120,6 +111,8 @@
         {% include "rfm/cluster.html" %}
       {% elif menu == 'total' %}
         {% include "event/total.html" %}
+      {% elif menu == 'sms' %}
+        {% include "event/sms.html" %}
       {% elif menu == 'upjong' %}
         {% include "event/upjong.html" %}
       {% elif menu == 'area' %}
