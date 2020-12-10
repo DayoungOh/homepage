@@ -120,3 +120,18 @@
       ]
     }
     ```
+    
+### SMS 퀵사이트 임베딩
+
+* QuickSight
+  - 임베딩 할 대시보드 공유
+    - 공유할 사용자 추가 -> quicksightembed@nice.co.kr(VS Code의 해당 html에서 axios 내부 userArn 변수에 붙은 계정)
+* VS Code
+  - HTML 수정
+    - 임베딩 할 대시보드를 가져오기 위해 html 생성 후(소스는 sms.html 혹은 total.html 참고) axios 내부의 dashboardId를 해당 대시보드의 id 로 변경
+  - 라우팅
+    - index.html에 임베딩 한 대시보드 페이지로 연결되는 탭이나 버튼 추가
+    - routes.py에 새로 생성한 HTML 라우팅('menu'라는 변수에 따라 라우팅이 되므로 확인 필요!)
+* Git
+  - upstream(nicezinidata/packus-dashboard)에 push 후 merge
+  - merge가 완료되면, packus 서버에 git pull 후 reuwsgi(재기동 alias) -> https://15.164.120.183/ 에서 확인 가능
