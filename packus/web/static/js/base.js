@@ -33,7 +33,7 @@ const Base = {
       Base.loadSegDashboardData();
       $('#segmentMemberList').empty();
       Base.selectBoxMemberList();
-      Base.segmentMemberListInit();
+      //Base.segmentMemberListInit();
     });
     $('#seg-memlist').on('click', function() {
       $('#segmentMemberList').empty();
@@ -47,7 +47,9 @@ const Base = {
   segInfo: {
     model_nm: "",
     upjong: "",
-    sales: "",
+    //sales: "",
+    salesfrom: "",
+    salesto: "",
     datefrom: "",
     dateto: "",
   },
@@ -88,13 +90,13 @@ const Base = {
     });
   },
   selectBoxItemInit: function(segInfo, idx) {
-    const segInfoStr = segInfo.model_nm + "|" + segInfo.upjong + "|" + segInfo.sales + "|" + segInfo.datefrom + "~" + segInfo.dateto
+    const segInfoStr = segInfo.model_nm + "|" + segInfo.upjong + "|" + segInfo.salesfrom + "~" + segInfo.salesto + "|" + segInfo.datefrom + "~" + segInfo.dateto
     $('select#segmentSelect0').append($('<option value="'+segInfoStr+'" '
-      + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.sales+', 기간:'+segInfo.datefrom+'~'+segInfo.dateto+')</option>'))
+      + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.salesfrom+'~'+segInfo.salesto+', 기간:'+segInfo.datefrom+'~'+segInfo.dateto+')</option>'))
     $('select#segmentSelect1').append($('<option value="'+segInfoStr+'" '
-      + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.sales+', 기간:'+segInfo.datefrom+'~'+segInfo.dateto+')</option>'))
+      + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.salesfrom+'~'+segInfo.salesto+', 기간:'+segInfo.datefrom+'~'+segInfo.dateto+')</option>'))
     $('select#segmentSelect2').append($('<option value="'+segInfoStr+'" '
-      + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.sales+', 기간:'+segInfo.datefrom+'~'+segInfo.dateto+')</option>'))
+      + (idx === 0 ? 'checked=true' : '') + '>'+segInfo.model_nm+'(업종:'+segInfo.upjong+', 구매액:'+segInfo.salesfrom+'~'+segInfo.salesto+', 기간:'+segInfo.datefrom+'~'+segInfo.dateto+')</option>'))
     
     },
   selectBoxMemberList: function() {
@@ -105,17 +107,31 @@ const Base = {
   },
   segmentMemberListInit: function() {
     let upjong = $('select#segmentSelectML option:selected').val().split("|")[1];
-    let salesFrom = $('select#segmentSelectML option:selected').val().split("|")[2].split("~")[0].replace("원", "");
-    let salesTo = "";
-    if(salesFrom == '1000000') {
-      salesTo = '5000000';
-    } else {
-      salesTo = $('select#segmentSelectML option:selected').val().split("|")[2].split("~")[1].replace("원", "");
-    }
+    let salesFrom = $('select#segmentSelectML option:selected').val().split("|")[2].split("~")[0];
+    let salesTo = $('select#segmentSelectML option:selected').val().split("|")[2].split("~")[1];
+    // let salesFrom = $('select#segmentSelectML option:selected').val().split("|")[2].split("~")[0].replace("원", "");
+    // let salesTo = "";
+    // if(salesFrom == '1000000') {
+    //   salesTo = '5000000';
+    // } else {
+    //   salesTo = $('select#segmentSelectML option:selected').val().split("|")[2].split("~")[1].replace("원", "");
+    // }
     let periodFrom = $('select#segmentSelectML option:selected').val().split("|")[3].substring(0, 10);
     let periodTo = $('select#segmentSelectML option:selected').val().split("|")[3].substring(11, 21);
-    const iframeSrc = "https://52.78.186.240/s/packus/app/kibana#/dashboard/c6846cb0-f62d-11ea-b4c2-dd534a99a192?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-5y%2Fy,to:now))&_a=(description:'',filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:upjong3_nm,negate:!f,params:(query:" + upjong + "),type:phrase),query:(match_phrase:(upjong3_nm:" + upjong + "))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:regdt,negate:!f,params:(gte:'" + periodFrom + "',lt:'" + periodTo + "'),type:range),range:(regdt:(gte:'" + periodFrom + "',lt:'" + periodTo + "'))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:totalgoodsprice,negate:!f,params:(gte:" + salesFrom + ",lt:" + salesTo + "),type:range),range:(totalgoodsprice:(gte:" + salesFrom + ",lt:" + salesTo + ")))),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:%5B%EC%84%B8%EA%B7%B8%EB%A8%BC%ED%8A%B8%5D%EA%B3%A0%EA%B0%9D%EB%A6%AC%EC%8A%A4%ED%8A%B8,viewMode:view)"
+debugger;
+    let upjongArray = new Array();
+    upjongArray = upjong.split(",");
+    let selectedUpjong = new Array();
+    for(var i = 0; i < upjongArray.length; i++) {
+      //debugger;
+      selectedUpjong.push("(match_phrase:(upjong3_nm:" + upjongArray[i] + "))");
+    }
+    //const iframeSrc = "https://52.78.186.240/s/packus/app/kibana#/dashboard/c6846cb0-f62d-11ea-b4c2-dd534a99a192?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(description:'',filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:regdt,negate:!f,params:(gte:'" + periodFrom + "',lt:'" + periodTo + "'),type:range),range:(regdt:(gte:'" + periodFrom + "',lt:'" + periodTo + "'))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:upjong3_nm,negate:!f,params:!(" + upjong + "),type:phrases,value:%EC%A4%91%EA%B5%AD%EC%9D%8C%EC%8B%9D),query:(bool:(minimum_should_match:1,should:!((match_phrase:(upjong3_nm:" + upjong + ")))))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:totalgoodsprice,negate:!f,params:(gte:" + salesFrom + ",lt:" + salesTo + "),type:range),range:(totalgoodsprice:(gte:" + salesFrom + ",lt:" + salesTo + ")))),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:%5B%EC%84%B8%EA%B7%B8%EB%A8%BC%ED%8A%B8%5D%EA%B3%A0%EA%B0%9D%EB%A6%AC%EC%8A%A4%ED%8A%B8,viewMode:view)"
+    const iframeSrc = "https://52.78.186.240/s/packus/app/kibana#/dashboard/c6846cb0-f62d-11ea-b4c2-dd534a99a192?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(description:'',filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:regdt,negate:!f,params:(gte:'" + periodFrom + "',lt:'" + periodTo + "'),type:range),range:(regdt:(gte:'" + periodFrom + "',lt:'" + periodTo + "'))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:upjong3_nm,negate:!f,params:!(" + upjong + "),type:phrases,value:'" + upjong + "'),query:(bool:(minimum_should_match:1,should:!(" + selectedUpjong + ")))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:totalgoodsprice,negate:!f,params:(gte:" + salesFrom + ",lt:" + salesTo + "),type:range),range:(totalgoodsprice:(gte:" + salesFrom + ",lt:" + salesTo + ")))),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:%5B%EC%84%B8%EA%B7%B8%EB%A8%BC%ED%8A%B8%5D%EA%B3%A0%EA%B0%9D%EB%A6%AC%EC%8A%A4%ED%8A%B8,viewMode:view)"
+    //"https://52.78.186.240/s/packus/app/kibana#/dashboard/c6846cb0-f62d-11ea-b4c2-dd534a99a192?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(description:'',filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:regdt,negate:!f,params:(gte:'2019-01-31',lt:'2019-12-31'),type:range),range:(regdt:(gte:'2019-01-31',lt:'2019-12-31'))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:upjong3_nm,negate:!f,params:!(%EB%8B%AD%EA%B0%88%EB%B9%84%EC%A0%84%EB%AC%B8,%EC%9B%A8%EB%94%A9%EB%B6%80%ED%8E%98,%EC%B4%88%EB%B0%A5%EC%A0%84%EB%AC%B8,%ED%95%B4%EC%9E%A5%EA%B5%AD%2F%EA%B0%90%EC%9E%90%ED%83%95,%EC%8B%9D%EB%A3%8C%ED%92%88,%EC%A4%91%EA%B5%AD%EC%9D%8C%EC%8B%9D,%EC%9D%BC%EB%B0%98%ED%95%9C%EC%8B%9D%2F%EB%B0%B1%EB%B0%98,%EA%B5%AD%EC%88%98%2F%EB%A7%8C%EB%91%90%2F%EC%B9%BC%EA%B5%AD%EC%88%98,%EC%88%9C%EB%8C%80%EC%A0%84%EB%AC%B8%EC%A0%90),type:phrases,value:'%EB%8B%AD%EA%B0%88%EB%B9%84%EC%A0%84%EB%AC%B8,%20%EC%9B%A8%EB%94%A9%EB%B6%80%ED%8E%98,%20%EC%B4%88%EB%B0%A5%EC%A0%84%EB%AC%B8,%20%ED%95%B4%EC%9E%A5%EA%B5%AD%2F%EA%B0%90%EC%9E%90%ED%83%95,%20%EC%8B%9D%EB%A3%8C%ED%92%88,%20%EC%A4%91%EA%B5%AD%EC%9D%8C%EC%8B%9D,%20%EC%9D%BC%EB%B0%98%ED%95%9C%EC%8B%9D%2F%EB%B0%B1%EB%B0%98,%20%EA%B5%AD%EC%88%98%2F%EB%A7%8C%EB%91%90%2F%EC%B9%BC%EA%B5%AD%EC%88%98,%20%EC%88%9C%EB%8C%80%EC%A0%84%EB%AC%B8%EC%A0%90'),query:(bool:(minimum_should_match:1,should:!((match_phrase:(upjong3_nm:%EB%8B%AD%EA%B0%88%EB%B9%84%EC%A0%84%EB%AC%B8)),(match_phrase:(upjong3_nm:%EC%9B%A8%EB%94%A9%EB%B6%80%ED%8E%98)),(match_phrase:(upjong3_nm:%EC%B4%88%EB%B0%A5%EC%A0%84%EB%AC%B8)),(match_phrase:(upjong3_nm:%ED%95%B4%EC%9E%A5%EA%B5%AD%2F%EA%B0%90%EC%9E%90%ED%83%95)),(match_phrase:(upjong3_nm:%EC%8B%9D%EB%A3%8C%ED%92%88)),(match_phrase:(upjong3_nm:%EC%A4%91%EA%B5%AD%EC%9D%8C%EC%8B%9D)),(match_phrase:(upjong3_nm:%EC%9D%BC%EB%B0%98%ED%95%9C%EC%8B%9D%2F%EB%B0%B1%EB%B0%98)),(match_phrase:(upjong3_nm:%EA%B5%AD%EC%88%98%2F%EB%A7%8C%EB%91%90%2F%EC%B9%BC%EA%B5%AD%EC%88%98)),(match_phrase:(upjong3_nm:%EC%88%9C%EB%8C%80%EC%A0%84%EB%AC%B8%EC%A0%90)))))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:totalgoodsprice,negate:!f,params:(gte:0,lt:100000),type:range),range:(totalgoodsprice:(gte:0,lt:100000)))),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:%5B%EC%84%B8%EA%B7%B8%EB%A8%BC%ED%8A%B8%5D%EA%B3%A0%EA%B0%9D%EB%A6%AC%EC%8A%A4%ED%8A%B8,viewMode:view)"
+    //"https://52.78.186.240/s/packus/app/kibana#/dashboard/c6846cb0-f62d-11ea-b4c2-dd534a99a192?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(description:'',filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:regdt,negate:!f,params:(gte:'2019-01-31',lt:'2019-12-31'),type:range),range:(regdt:(gte:'2019-01-31',lt:'2019-12-31'))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:upjong3_nm,negate:!f,params:!(%EB%8B%AD%EA%B0%88%EB%B9%84%EC%A0%84%EB%AC%B8),type:phrases,value:%EB%8B%AD%EA%B0%88%EB%B9%84%EC%A0%84%EB%AC%B8),query:(bool:(minimum_should_match:1,should:!((match_phrase:(upjong3_nm:%EB%8B%AD%EA%B0%88%EB%B9%84%EC%A0%84%EB%AC%B8)))))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:ffee50a0-d2c5-11ea-83ec-578bbedbe7b6,key:totalgoodsprice,negate:!f,params:(gte:0,lt:100000),type:range),range:(totalgoodsprice:(gte:0,lt:100000)))),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:%5B%EC%84%B8%EA%B7%B8%EB%A8%BC%ED%8A%B8%5D%EA%B3%A0%EA%B0%9D%EB%A6%AC%EC%8A%A4%ED%8A%B8,viewMode:view)"
     $('#segmentMemberList').append($('<iframe src="'+iframeSrc+'" height="100%" width="100%" frameborder="0" style="border-radius: .8rem;"></iframe>'))
+    debugger;
   },
   loadUpjongList: function () {
     $.ajax({
@@ -138,6 +154,9 @@ const Base = {
     Base.segInfo.model_nm = $("#seg-name").val();
     Base.segInfo.datefrom = $('#periodFrom').val();
     Base.segInfo.dateto = $('#periodTo').val();
+    Base.segInfo.salesfrom = $('#salesFrom').val();
+    Base.segInfo.salesto = $('#salesTo').val();
+  
     const flag = Base.segInfovalidator(Base.segInfo)
     if (flag === "OK") {
       $.ajax({
@@ -151,7 +170,8 @@ const Base = {
           Base.segInfo = {
             model_nm: "",
             upjong: "",
-            sales: "",
+            salesfrom: "",
+            salesto: "",
             datefrom: "",
             dateto: "",
           };
@@ -180,7 +200,7 @@ const Base = {
   },
 
   addSegListTag: function (segId, segInfo) {
-    const segInfoStr = " (업종: " + segInfo.upjong + " / 구매액: " + segInfo.sales + " / 기간: " + segInfo.datefrom + "~" + segInfo.dateto + ")"
+    const segInfoStr = " (업종: " + segInfo.upjong + " / 구매액: " + segInfo.salesfrom + "~" + segInfo.salesto + " / 기간: " + segInfo.datefrom + "~" + segInfo.dateto + ")"
     let $list = $('<div class="list-group-item list-group-item-action d-flex"><div style="width: 90%; margin-right: auto;">' + segInfo.model_nm + segInfoStr +'</div></div>');
     const $btnTag =$( '<button type="button" class="btn btn-sm btn-danger float-right m-0 removeSeg" value="' 
     + segId+'">삭제</button>').on("click", function () {
@@ -218,21 +238,17 @@ const Base = {
     // $('#termSelectTo').val(year + "-" + month +"-"+ day)
   },
   loadSegDashboardData: function (segInfo) {
-    // if ( $('#termSelectFrom')[0].value === "" || $('#termSelectTo')[0].value === "") {
-    //   alert('분석기간을 입력해주세요!')
-    // } else {
       let selectedSeg0 = $('#segmentSelect0 option:selected')[0].value.split('|')
       let selectedSeg1 = $('#segmentSelect1 option:selected')[0].value.split('|')
       let selectedSeg2 = $('#segmentSelect2 option:selected')[0].value.split('|')
   
       const segCond = { // 조건 생성
         "search_cond_list": [
-          {"datefrom": selectedSeg0[3].split('~')[0], "dateto" : selectedSeg0[3].split('~')[1], "upjong3_nm": selectedSeg0[1], "sales_cond": selectedSeg0[2]},
-          {"datefrom": selectedSeg1[3].split('~')[0], "dateto" : selectedSeg1[3].split('~')[1], "upjong3_nm": selectedSeg1[1], "sales_cond": selectedSeg1[2]},
-          {"datefrom": selectedSeg2[3].split('~')[0], "dateto" : selectedSeg2[3].split('~')[1], "upjong3_nm": selectedSeg2[1], "sales_cond": selectedSeg2[2]}
+          {"datefrom": selectedSeg0[3].split('~')[0], "dateto" : selectedSeg0[3].split('~')[1], "upjong3_nm": selectedSeg0[1], "salesfrom": selectedSeg0[2].split('~')[0], "saleto" : selectedSeg0[2].split('~')[1]},
+          {"datefrom": selectedSeg1[3].split('~')[0], "dateto" : selectedSeg1[3].split('~')[1], "upjong3_nm": selectedSeg1[1], "salesfrom": selectedSeg1[2].split('~')[0], "saleto" : selectedSeg1[2].split('~')[1]},
+          {"datefrom": selectedSeg2[3].split('~')[0], "dateto" : selectedSeg2[3].split('~')[1], "upjong3_nm": selectedSeg2[1], "salesfrom": selectedSeg2[2].split('~')[0], "saleto" : selectedSeg2[2].split('~')[1]}
         ]
       }
-  
       $.ajax({
         type: "post",
         url: "/api/segments/dashboard-data",
@@ -268,6 +284,7 @@ const Base = {
             dashboardChart.updateChart(resp);
           }
           $('#chartContainer').removeClass('d-none')
+    debugger;
         },
         error: function () {
           alert("세그먼트 데이터를 가져오지 못했습니다.");

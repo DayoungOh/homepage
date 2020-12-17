@@ -99,13 +99,14 @@ def get_segments_data():
             }
         }
     )
+
     total_mem_count = total_data['aggregations']['total_mem_count']['value']
     print('===전체 멤버 수: ', total_mem_count)
     for search_cond in search_cond_list:
         datefrom = search_cond['datefrom']
         dateto = search_cond['dateto']
         upjong3_nm = search_cond['upjong3_nm'].split(',')
-        sales_cond = search_cond['sales_cond'].split(',')
+        sales_cond = search_cond['salesfrom'] + '~' + search_cond['saleto']
         body = {
             'query': {
                 'bool': {
@@ -161,11 +162,11 @@ def get_segments_data():
 
             }
         }
+
         data = es.search(
             index="packus-ecommerce-*",
             body=body
         )
-
         re = [{'n_memno': item['key'],
                'sales': item['sales_sum']['value'],
                'recency': item['recency']['value'],
@@ -173,7 +174,6 @@ def get_segments_data():
                'frequency': item['frequency']['value']}
               for item in data['aggregations']['data']['buckets']
               if sales_validator(sales_cond, item['sales_sum']['value'])]
-
         chart1_data.append(len(re))
         chart2_data.append(round(len(re)/total_mem_count* 100, 2))
 
@@ -246,21 +246,23 @@ def sales_validator(sales_cond, sales):
     """get_segments_data에서 사용되는 함수
     """
     i = 0
-    for cond in sales_cond:
-        if cond == '1000000~원':
-            i += (sales >= 1000000)
-        elif cond == '500000~1000000원':
-            i += (sales >= 500000 and sales < 1000000)
-        elif cond == '300000~500000원':
-            i += (sales >= 300000 and sales < 500000)
-        elif cond == '150000~300000원':
-            i += (sales >= 150000 and sales < 300000)
-        elif cond == '50000~150000원':
-            i += (sales >= 50000 and sales < 150000)
-        elif cond == '0~50000원':
-            i += (sales < 50000)
-    return i > 0
+    
+    # 화면 변경에 따른 로직 변경도 필요
+    # 시작금액,끝 금액 사이에 대한 검색 로직이 필요
+    tempSalse = sales_cond.split('~')
 
+    startSalse = int(tempSalse[0])
+    endSales = int(tempSalse[1])
+
+    #검토용 print
+    #print('금액은 : ' + str(startSalse) + ' ~ ' + str(endSales) + ' / 비교값 : ' + str(sales) + ' / 결과 :' + "true" if sales >= startSalse and sales <= endSales else '금액은 : ' + str(startSalse) + ' ~ ' + str(endSales) + ' / 비교값 : ' + str(sales) + ' / 결과 : false' )
+
+    #검색로직 변경
+    if sales >= startSalse and sales <= endSales:i += 1
+
+    #if i > 0:print('0보다 i가 큼' + str(i))
+
+    return i > 0
 
 def recency_by(x):
     """get_segments_data에서 사용되는 함수
