@@ -5,15 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>지도테스트</title>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=301b5o4gx4&submodules=geocoder"></script>
+    <script type="text/javascript" src="http://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=301b5o4gx4&submodules=geocoder"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="map" style="display:inherit;width:800px;height:800px;margin-top:10px;margin-left:20px"></div>
-<button id="all-btn">전체보기</button>
-<button id="test-btn">테스트 텍스트 추가</button>
-<button id="init-btn">텍스트 초기화</button>
-<div id="zoom-map" style="display: none; width:800px;height:800px;margin-top:10px;margin-left:20px;background-color:gray"></div>
+<div id="map" style="display:inherit;width:1250px;height:800px;margin-top:10px;margin-left:20px">
+  <div class="" style="position: absolute; z-index: 1000;">
+    <button class="mega" id="seoul" >서울</button>
+    <button class="mega" id="incheon">인천</button>
+    <button class="cty" id="gangseo">강서구</button>
+  </div>
+  <div class="buttons" style="position: absolute; top: 50px; left: 0px; z-index: 1000; padding: 12px; display: inline-grid;">
+    <!-- <button id="all-btn">전체보기</button>
+    <button id="test-btn">테스트 텍스트 추가</button>
+    <button id="init-btn">텍스트 초기화</button> -->
+    <a id="unit" style="cursor: pointer;"><img src="/static/img/map/overlay1-1.png" alt="판매단가"></a>
+    <a id="sales" style="cursor: pointer;"><img src="/static/img/map/overlay1-2.png" alt="판매액"></a>
+    <a id="rate" style="cursor: pointer;"><img src="/static/img/map/overlay1-3.png" alt="판매비중"></a>
+  </div>
+</div>
+<div id="zoom-map" style="display: none; width:1250px;height:800px;margin-top:10px;margin-left:20px;background-color:gray"></div>
 
 <script>
 const CENTER = new naver.maps.LatLng(36.005432, 127.918499);
@@ -70,6 +81,10 @@ const sInfo = [
   {name: "용산구", loc: new naver.maps.LatLng(37.5311008, 126.9810742), level: 5},
 ]
 
+pInfo.forEach(function(area) {
+  console.log(area);
+})
+
 var map = new naver.maps.Map(document.getElementById('map'), {
     zoom: 8,
     minZoom: 8,
@@ -99,6 +114,30 @@ $('#test-btn').on('click', () => {
 $('#init-btn').on('click', () => {
   $('.sales-text').html('')
 })
+// $('#unit').on('click', () => {
+//   debugger;
+// })
+$('.mega').on('click', function() {
+  const btnText = $(this).text();
+  const indexMega = pInfo.findIndex((element, indexMega) => {
+    if(element.name === btnText) {
+      return true
+    }
+  })
+  const item = pInfo[indexMega];
+  zoomMaps(item);
+})
+
+$('.cty').on('click', function() {
+  const btnText = $(this).text();
+  const indexCty = sInfo.findIndex((element, indexCty) => {
+    if(element.name === btnText) {
+      return true
+    }
+  })
+  const item = sInfo[indexCty];
+  zoomMaps(item);
+})
 
 const makeCircleAndMarker = (map, item) => {
   const marker = new naver.maps.Marker({
@@ -121,6 +160,7 @@ const makeCircleAndMarker = (map, item) => {
     zoomMaps(item)
   });
 }
+
 
 const makeCircleAndMarker2 = (map, item) => {
   const marker = new naver.maps.Marker({
@@ -155,22 +195,23 @@ const zoomMaps = (item) => {
       makeCircleAndMarker2(zoomMap, item)
     });
   }
-
 }
 
-naver.maps.Service.geocode({
-        address: '불정로 6'
-    }, function(status, response) {
-        if (status !== naver.maps.Service.Status.OK) {
-          console.log(response)
-            // return alert('Something wrong!');
-        }
+// naver.maps.Service.geocode({
+//         address: '불정로 6'
+//     }, function(status, response) {
+//         if (status !== naver.maps.Service.Status.OK) {
+//           console.log(response)
+//             // return alert('Something wrong!');
+//         }
 
-        var result = response.result, // 검색 결과의 컨테이너
-            items = result.items; // 검색 결과의 배열
+//         var result = response.result, // 검색 결과의 컨테이너
+//             items = result.items; // 검색 결과의 배열
 
-        // do Something
-    });
+//         // do Something
+//     });
+
+  
 
 
 </script>
