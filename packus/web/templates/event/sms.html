@@ -39,7 +39,7 @@ function embedDashboard(embedUrl) {
 			        'Content-Type' : 'application/json' ,
 			        'Access-Control-Allow-Origin': '*'
 			    }
-	        const apiGatewayUrl = '../packusQuickSightEmbedAPI/getDashboardEmbedURL?';
+	        const apiGatewayUrl = '../packusQuickSightEmbedAPI/getdashboardembedurl?';
 	        axios.post(apiGatewayUrl, {
 			        "dashboardId": 'a0e0a42d-5122-4930-87c7-eb5a05fdf712',
 			        "userArn": "arn:aws:quicksight:ap-northeast-2:780124858304:user/default/QuickSightEmbedRole/quicksightembed@nice.co.kr",
