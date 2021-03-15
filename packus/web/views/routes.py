@@ -63,11 +63,6 @@ def ncafe():
     menu = 'ncafe'
     return render_template('index.html', menu=menu)    
 
-@app.route('/event/cafe')
-def cafe():
-    menu = 'cafe'
-    return render_template('index.html', menu=menu)   
-
 @app.route('/event/sms')
 def sms():
     menu = 'sms'
