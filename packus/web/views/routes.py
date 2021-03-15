@@ -55,7 +55,17 @@ def area():
 @app.route('/event/total')
 def total():
     menu = 'total'
+    return render_template('index.html', menu=menu) 
+
+@app.route('/event/okpos')
+def okpos():
+    menu = 'okpos'
     return render_template('index.html', menu=menu)  
+
+@app.route('/event/cafe')
+def cafe():
+    menu = 'cafe'
+    return render_template('index.html', menu=menu)   
 
 @app.route('/event/sms')
 def sms():
