@@ -67,11 +67,11 @@
             </ul>
             <ul class="list-styled-none mt-0">
               <li class="sub-sidebar-brand"
-                  {% if menu == 'cafe' %}
+                  {% if menu == 'ncafe' %}
                       class="active"
                     {% endif %}
                   >
-                  <a href="/event/cafe" class="p-0 mt-0">―   네이버 카페<span class="sub_icon fa fa-hdd-o"></span></a>
+                  <a href="/event/ncafe" class="p-0 mt-0">―   네이버 카페<span class="sub_icon fa fa-hdd-o"></span></a>
               </li>
             </ul>
             <ul class="list-styled-none mt-0">
@@ -131,8 +131,8 @@
         {% include "event/total.html" %}
       {% elif menu == 'okpos' %}
         {% include "event/okpos.html" %}
-      {% elif menu == 'cafe' %}
-        {% include "event/cafe.html" %}
+      {% elif menu == 'ncafe' %}
+        {% include "event/ncafe.html" %}
       {% elif menu == 'sms' %}
         {% include "event/sms.html" %}
       {% elif menu == 'upjong' %}
@@ -149,7 +149,6 @@
         {% include "event/shop.html" %}
       {% endif %}
     </div>
-
 {% endblock %}
 
 <!--html 파일마다 개별적으로 js 파일을 가져와야 할 때 사용-->

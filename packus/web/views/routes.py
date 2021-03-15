@@ -10,25 +10,21 @@ def index():
     menu = 'dashboard'
     return render_template('index.html', menu=menu)
 
-
 @app.route('/segments')
 @app.route('/segments/segments')
 def segments():
     menu = 'segments'
     return render_template('index.html', menu=menu)
 
-
 @app.route('/segments/seg_reports')
 def seg_reports():
     menu = 'seg_reports'
     return render_template('index.html', menu=menu)
 
-
 @app.route('/dashboard')
 def dashboard():
     menu = 'dashboard'
     return render_template('index.html', menu=menu)
-
 
 @app.route('/rfm')
 @app.route('/rfm/model')
@@ -60,7 +56,12 @@ def total():
 @app.route('/event/okpos')
 def okpos():
     menu = 'okpos'
-    return render_template('index.html', menu=menu)  
+    return render_template('index.html', menu=menu)   
+
+@app.route('/event/ncafe')
+def ncafe():
+    menu = 'ncafe'
+    return render_template('index.html', menu=menu)    
 
 @app.route('/event/cafe')
 def cafe():
