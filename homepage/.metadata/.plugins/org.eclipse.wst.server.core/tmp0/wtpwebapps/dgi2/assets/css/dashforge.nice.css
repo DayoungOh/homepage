@@ -1,0 +1,59 @@
+/* 활성화 시키면 print / pdf 둘다 정상 출력되나, 보고서가 한쪽으로 쏠림(web에서) */
+/*  body { */
+/*  	max-width: 992px!important; */
+/*  } */
+    @media print {
+    	.col-print {
+    		max-width:50%!important;
+    	}
+      	
+      	.none-print {
+      		display: none;
+		}
+		
+/* 		.chartjswidth { */
+/* 			  width: 30vw; */
+/* 		} */
+    }
+	
+	@media (min-width: 1200px)
+	.df-example {
+	    padding: 25px;
+	}
+	@media (min-width: 992px)
+	.df-example {
+	    padding: 20px;
+	}
+	.df-example {
+	    font-size: 0.875rem;
+	    letter-spacing: normal;
+	    padding: 10px;
+	    background-color: #fff;
+	    border: 0px solid rgba(72, 94, 144, 0.16);
+	    position: relative;
+	}
+	.df-example::before {
+	    content: attr(data-label);
+	    display: block;
+	    position: absolute;
+	    top: -9px;
+	    left: 15px;
+	    font-size: 13px;
+	    font-weight: 600;
+	    font-family: '돋움',dotum,AppleGothic,sans-serif;
+	    letter-spacing: 1px;
+	    text-transform: uppercase;
+	    background-color: inherit;
+	    color: #8392a5;
+	    padding: 0 5px;
+	}
+/* 	.chart-line { */
+/* 		min-height: 1300px; */
+/* 	} */
+		
+/* 		.chartjswidth { */
+/*  			position: relative; */
+/*  			  margin: auto; */
+/*  			  height: 40vh; */
+/*  			  width: 80vw; */
+/* 		} */

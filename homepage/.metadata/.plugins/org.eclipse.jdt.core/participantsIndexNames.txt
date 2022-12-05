@@ -1,0 +1,3 @@
+INDEX VERSION 1.131
+C:\Users\nice\eclipse-workspace\dyoh\homepage\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3533982217.index
+\dgi2\src
